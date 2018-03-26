@@ -4,7 +4,7 @@
 			<?php echo esc_html( $slide['alt'] ); ?>
 		</div>
 	</div>
-	<?php if( $slideshow['show_caption'] ) : ?><div class="ignite-slide-caption-wrapper">
+	<?php if ( $slideshow['show_caption'] ) : ?><div class="ignite-slide-caption-wrapper">
 		<div class="ignite-slide-caption">
 			<div class="ignite-slide-caption-inner">
 				<div class="ignite-slide-caption-title">
@@ -16,5 +16,5 @@
 			</div>
 		</div>
 	</div><?php endif; ?>
-	<?php if( ! empty( $slide['link'] ) ) : ?><div class="ignite-slide-link-wrapper"><a href="<?php echo esc_url( $slide['link'] ); ?>"><?php echo wp_kses_post( $slide['title'] ); ?></a></div><?php endif; ?>
+	<?php if ( ! empty( $slide['link'] ) ) : ?><div class="ignite-slide-link-wrapper"><a href="<?php echo esc_url( $slide['link'] ); ?>"><?php echo wp_kses_post( $slide['title'] ); ?></a></div><?php endif; ?>
 </div>

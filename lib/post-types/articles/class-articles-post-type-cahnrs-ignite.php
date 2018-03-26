@@ -181,7 +181,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 		$topics_meta = array();
 
-		$topics = explode( ', ', $args['article_topic'] );
+		$topics = explode( ',', $args['article_topic'] );
 
 		if ( is_array( $topics ) ) {
 
@@ -220,7 +220,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 		$subjects_meta = array();
 
-		$subjects = explode( ', ', $args['article_subject'] );
+		$subjects = explode( ',', $args['article_subject'] );
 
 		if ( is_array( $subjects ) ) {
 
@@ -257,7 +257,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 		$placements_meta = array();
 
-		$placements = explode( ', ', $args['article_placement'] );
+		$placements = explode( ',', $args['article_placement'] );
 
 		if ( is_array( $placements ) ) {
 
@@ -348,7 +348,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 	protected function get_rest_meta_query( $key, $values, $relation = 'OR' ) {
 
-		$values = explode( ', ', $values );
+		$values = explode( ',', $values );
 
 		$meta_query = array( 'relation' => $relation );
 
@@ -403,7 +403,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 		);
 
 		$args = array(
-			'labels'			 => $labels,
+			'labels'             => $labels,
 			'description'        => 'News & Announcements.',
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -412,16 +412,15 @@ class Articles_Post_Type_CAHNRS_Ignite {
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'article' ),
 			'capability_type'    => 'post',
-			'show_in_rest'		 => true,
+			'show_in_rest'       => true,
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'taxonomies'		 => array( 'category', 'post_tag' ),
+			'taxonomies'         => array( 'category', 'post_tag' ),
 			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'revisions', 'post-formats', 'excerpt' )
 		);
 
 		register_post_type( 'article', $args );
-
 
 	} // End register_post_type
 
@@ -514,7 +513,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 		if ( ! empty( $sources_meta['name_1'] ) ) {
 
-			for( $i = 1; $i < 6; $i++ ) {
+			for ( $i = 1; $i < 6; $i++ ) {
 
 				$index = ( $i - 1 );
 
@@ -564,28 +563,33 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 	public function save_post( $post_id, $post, $update ) {
 
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+
 			return;
 
-		if ( ! current_user_can( 'edit_posts' ) )
+		}
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+
 			return;
+
+		}
 
 		// TO DO: Sanitize / Nonce this
 
 		$fields = array(
-			'_article_short_title' 		=> 'text',
-			'_article_slide_image_url' 	=> 'text',
-			'_article_redirect_url' 	=> 'text',
-			'_article_locations' 		=> 'text-array',
-			'_article_topic' 			=> 'text-array',
-			'_article_subject' 			=> 'text-array',
-			'_article_distribute' 		=> 'text-array',
-			'_article_placement' 		=> 'text-array',
-			'_sources' 					=> 'text-array',
+			'_article_short_title' => 'text',
+			'_article_slide_image_url' => 'text',
+			'_article_redirect_url' => 'text',
+			'_article_locations' => 'text-array',
+			'_article_topic' => 'text-array',
+			'_article_subject' => 'text-array',
+			'_article_distribute' => 'text-array',
+			'_article_placement' => 'text-array',
+			'_sources' => 'text-array',
 		);
 
 		foreach ( $fields as $key => $type ) {
-
 
 			if ( isset( $_POST[ $key ] ) ) {
 

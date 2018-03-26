@@ -57,7 +57,7 @@ $page_banner->the_banner( 'single' ); ?>
 		 <?php // Sources
 							$sources = get_post_meta( get_the_ID(), '_sources', true );
 					
-							if( $sources ) :
+							if ( $sources ) :
 					
 								echo '<p class="source-contact">Source Contact'; if ( $sources['name_2'] ) echo 's'; echo '</p>';
 	

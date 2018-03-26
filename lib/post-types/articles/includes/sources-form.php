@@ -5,7 +5,7 @@
 $value = get_post_meta( $post->ID, '_sources', true );
 
 //var_dump( $value );
-		
+
 //print_r($value);
 
 echo '<div id="news-release-sources"><h2>News Sources: <span>(Optional)</span></h2><div class="sources-container">';
@@ -14,46 +14,10 @@ echo '<div id="news-release-sources"><h2>News Sources: <span>(Optional)</span></
 
 echo '<div class="source">';
 echo '<label for="name_1">Name, Title</label><br />';
-echo '<input type="text" name="_sources[name_1]" value="' . $value['name_1'] . '" class="widefat" /><br />';
+echo '<input type="text" name="_sources[name_1]" value="' . esc_html( $value['name_1'] ) . '" class="widefat" /><br />';
 echo '<label for="info_2">Phone, Email</label><br />';
-echo '<input type="text" name="_sources[info_1]" value="' . $value['info_1'] . '" class="widefat" /><br />';
+echo '<input type="text" name="_sources[info_1]" value="' . esc_html( $value['info_1'] ) . '" class="widefat" /><br />';
 echo '</div>';
-
-/*if ( $value['name_2'] ) {
-	echo '<div class="source">';
-	echo '<label for="name_2">Name, Title</label><br />';
-	echo '<input type="text" id="name_2" name="name_2" value="' . $value['name_2'] . '" class="widefat" /><br />';
-	echo '<label for="info_2">Phone, Email</label><br />';
-	echo '<input type="text" id="info_2" name="info_2" value="' . $value['info_2'] . '" class="widefat" /><br />';
-	echo '</div>';
-}
-
-if ( $value['name_3'] ) {
-	echo '<div class="source">';
-	echo '<label for="name_3">Name, Title</label><br />';
-	echo '<input type="text" id="name_3" name="name_3" value="' . $value['name_3'] . '" class="widefat" /><br />';
-	echo '<label for="info_3">Phone, Email</label><br />';
-	echo '<input type="text" id="info_3" name="info_3" value="' . $value['info_3'] . '" class="widefat" /><br />';
-	echo '</div>';
-}
-
-if ( $value['name_4'] ) {
-	echo '<div class="source">';
-	echo '<label for="name_4">Name, Title</label><br />';
-	echo '<input type="text" id="name_4" name="name_4" value="' . $value['name_4'] . '" class="widefat" /><br />';
-	echo '<label for="info_4">Phone, Email</label><br />';
-	echo '<input type="text" id="info_4" name="info_4" value="' . $value['info_4'] . '" class="widefat" /><br />';
-	echo '</div>';
-}
-
-if ( $value['name_5'] ) {
-	echo '<div class="source">';
-	echo '<label for="name_5">Name, Title</label><br />';
-	echo '<input type="text" id="name_5" name="name_5" value="' . $value['name_5'] . '" class="widefat" /><br />';
-	echo '<label for="info_5">Phone, Email</label><br />';
-	echo '<input type="text" id="info_5" name="info_5" value="' . $value['info_5'] . '" class="widefat" /><br />';
-	echo '</div>';
-}*/
 
 echo '</div>';
 
@@ -74,7 +38,7 @@ jQuery(document).ready(function($) {
 		if ( counter < 6 ) {
 
 			var row = $( '.source:first' ).clone();
-	
+
 			$(row).find("input[type='text']").each(function() {
 				$(this).attr( 'name', $(this).attr( 'name' ).replace( '1', counter ) );
 				$(this).attr( 'id', $(this).attr( 'id' ).replace( '1', counter ) );
@@ -85,7 +49,7 @@ jQuery(document).ready(function($) {
 		}
 
 		console.log(counter);
-		
+
 	});
 
 });

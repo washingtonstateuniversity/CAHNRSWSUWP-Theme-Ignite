@@ -12,7 +12,7 @@ class Menus_CAHNRS_Ignite {
 
 	function modify_nav_menu_args( $args ) {
 
-		if( 'site' === $args['theme_location'] ) {
+		if ( 'site' === $args['theme_location'] ) {
 
 			$menu_depth = get_theme_mod( '_cahnrs_ignite_global_menu_depth', '' );
 

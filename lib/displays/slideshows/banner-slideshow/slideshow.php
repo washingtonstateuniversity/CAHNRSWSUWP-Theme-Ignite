@@ -2,7 +2,7 @@
 	<div class="ignite-slideshow-slides-wrapper">
 		<?php echo wp_kses_post( $slides_html ); ?>
 	</div>
-	<?php if( $slideshow['show_nav'] ) : ?><div class="ignite-slideshow-nav-wrapper <?php echo esc_html( $slideshow['height_class'] ); ?>">
+	<?php if ( $slideshow['show_nav'] ) : ?><div class="ignite-slideshow-nav-wrapper <?php echo esc_html( $slideshow['height_class'] ); ?>">
 		<?php echo wp_kses_post( $slide_nav_html ); ?>
 	</div><?php endif; ?>
 </div>

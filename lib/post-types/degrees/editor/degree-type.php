@@ -5,7 +5,7 @@
 			<label>Select Degree Type</label>
 			<select name="_ignite_degree_type">
 				<?php foreach ( $degree_types as $value => $label ) : ?>
-				<option value="<?php echo $value; ?>" <?php selected( $value, $settings['_ignite_degree_type'] ); ?>><?php echo $label; ?></option>
+				<option value="<?php echo esc_html( $value ); ?>" <?php selected( $value, $settings['_ignite_degree_type'] ); ?>><?php echo esc_html( $label ); ?></option>
 				<?php endforeach; ?>
 			</select>
 			<div class="ignite-helper-text">Selecting a Degree Type and Saving Will Display Type Specific Form Fields.</div>

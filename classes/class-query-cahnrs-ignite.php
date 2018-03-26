@@ -417,7 +417,7 @@ class Query_CAHNRS_Ignite {
 
 		$request_response = wp_remote_get( $request_url, array( 'timeout' => 15 ) );
 
-		if( ! is_wp_error( $request_response ) ) {
+		if ( ! is_wp_error( $request_response ) ) {
 
 			$json = wp_remote_retrieve_body( $request_response );
 
