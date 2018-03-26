@@ -25,7 +25,7 @@ Media Queries
 }
 
 .ignite-edit-form .ignite-field label {
-	font-weight: bold;
+	font-weight: 700;
 	display: block;
 }
 
@@ -37,21 +37,20 @@ Media Queries
 }
 
 /* Post Editor ---------------------------------------------- */
-
 .ignite-post-editor .ignite-field-set {
 	padding: 18px 0;
 }
 
 #poststuff .ignite-post-editor .ignite-field-set h2 {
-    font-size: 18px;
-    padding: 8px 0;
+	font-size: 18px;
+	padding: 8px 0;
 	border-bottom: 1px solid #fff;
 	position: relative;
-	margin: 8px 0 18px 0;
+	margin: 8px 0 18px;
 }
 
 #poststuff .ignite-post-editor .ignite-field-set h2:after {
-    content: '';
+	content: "";
 	display: block;
 	position: absolute;
 	background-color: #ccc;
@@ -110,9 +109,9 @@ Media Queries
 }
 
 .ignite-field input[type=checkbox] {
-  transform: scale(1.25);
+	transform: scale(1.25);
 }
 
 .ignite-field textarea {
-  width: 100%;
+	width: 100%;
 }
