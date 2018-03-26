@@ -95,7 +95,8 @@ class Functions_Ignite {
 
 		require_once __DIR__ . '/lib/post-types/articles/class-articles-post-type-cahnrs-ignite.php';
 
-		require_once __DIR__ . '/lib/post-types/news-release/class-news-release-post-type-cahnrs-ignite.php';
+		// Removed
+		//require_once __DIR__ . '/lib/post-types/news-release/class-news-release-post-type-cahnrs-ignite.php';
 
 		require_once __DIR__ . '/lib/post-types/theme-parts/class-theme-part-post-type-cahnrs-ignite.php';
 
