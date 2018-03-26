@@ -2,9 +2,9 @@ module.exports = function( grunt ) {
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( "package.json" ),
 
-		stylelint: {
+		/*stylelint: {
 			src: [ "css/*.css" ]
-		},
+		},*/
 
 		concat: {
 			options: {
