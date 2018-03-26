@@ -26,7 +26,7 @@ class Header_Ignite  extends Theme_Part_Ignite {
 
 		$html = '';
 
-		if ( is_active_sidebar( 'header_before' ) ) {
+		/*if ( is_active_sidebar( 'header_before' ) ) {
 
 			ob_start();
 
@@ -34,7 +34,7 @@ class Header_Ignite  extends Theme_Part_Ignite {
 
 			$html .= '<div id="widget-area-header-before">' . ob_get_clean() . '</div>';
 
-		} // End if
+		} // End if*/
 
 		$args = $this->get_customizer_args( $args );
 

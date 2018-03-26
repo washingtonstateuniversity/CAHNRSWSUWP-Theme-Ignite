@@ -522,15 +522,15 @@ $global_nav = array(
 		<ul class="c-menu">
 		<?php foreach ( $global_nav as $slug => $nav ) : ?>
 		<li class="top-menu-item<?php if ( ! empty( $nav['sub-menu'] ) ) : ?> has-drop-down<?php endif; ?><?php if ( ! empty( $args['active'] ) && ( $slug === $args['active'] ) ) : ?> active<?php endif; ?>">
-			<a href="<?php echo esc_url( $nav['url'] ); ?>"><?php echo esc_html( $nav['label'] ); ?></a>
+			<a href="<?php echo esc_url( $nav['url'] ); ?>"><?php echo wp_kses_post( $nav['label'] ); ?></a>
 			<?php if ( ! empty( $nav['sub-menu'] ) ) : ?><ul class="drop-down-menu">
 				<?php foreach ( $nav['sub-menu'] as $sub_menu_set ) : ?>
 				<li class="link-list">
-					<span><?php echo esc_html( $sub_menu_set['label'] ); ?></span>
+					<span><?php echo wp_kses_post( $sub_menu_set['label'] ); ?></span>
 					<ul class="submenu">
 						<?php foreach ( $sub_menu_set['menu-items'] as $index => $sub_menu_item ) : ?>
 						<li class="submenu-item">
-							<a href="<?php echo esc_url( $sub_menu_item['url'] ); ?>"><?php echo esc_html( $sub_menu_item['label'] ); ?></a>
+							<a href="<?php echo esc_url( $sub_menu_item['url'] ); ?>"><?php echo wp_kses_post( $sub_menu_item['label'] ); ?></a>
 						</li>
 						<?php endforeach; ?>
 					</ul>
@@ -540,7 +540,7 @@ $global_nav = array(
 					<ul class="submenu">
 						<?php foreach ( $nav['action-links'] as $action_link ) : ?>
 						<li class="submenu-item">
-							<a href="<?php echo esc_url( $action_link['url'] ); ?>"><?php echo esc_html( $action_link['label'] ); ?></a>
+							<a href="<?php echo esc_url( $action_link['url'] ); ?>"><?php echo wp_kses_post( $action_link['label'] ); ?></a>
 						</li>
 						<?php endforeach; ?>
 					</ul>
