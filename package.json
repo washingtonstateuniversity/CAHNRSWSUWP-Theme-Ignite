@@ -1,9 +1,9 @@
 {
-  "name": "wsuwp-spine-child-theme-skeleton",
+  "name": "cahnrswsuwp-theme-ignite",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/washingtonstateuniversity/wsuwp-spine-child-theme-skeleton"
+    "url": "https://github.com/washingtonstateuniversity/CAHNRSWSUWP-Theme-Ignite"
   },
   "devDependencies": {
     "autoprefixer": "^8.0.0",
