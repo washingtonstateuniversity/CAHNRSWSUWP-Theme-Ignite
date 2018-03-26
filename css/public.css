@@ -50,6 +50,7 @@ Media Queries
 
 /* Hooks
 --------------------------------------------------------------- */
+
 .hidden-element {
 	position: absolute !important;
 	top: -9999rem !important;
@@ -63,29 +64,69 @@ Media Queries
 	display: none !important;
 }
 
-.small-text, .small-text p {
+.small-text, 
+.small-text p {
 	font-size: 14px;
 	line-height: 18px;
 }
 
-.extra-small-text, .extra-small-text p {
+.extra-small-text, 
+.extra-small-text p {
 	font-size: 14px;
 	line-height: 18px;
 }
 
-.css-height-300 { height: 300px; }
-.css-height-325 { height: 325px; }
-.css-height-350 { height: 350px; }
-.css-height-375 { height: 375px; }
-.css-height-400 { height: 400px; }
-.css-height-425 { height: 425px; }
-.css-height-450 { height: 450px; }
-.css-height-475 { height: 475px; }
-.css-height-500 { height: 500px; }
-.css-height-525 { height: 525px; }
-.css-height-550 { height: 550px; }
-.css-height-575 { height: 575px; }
-.css-height-600 { height: 600px; }
+.css-height-300 { 
+	height: 300px; 
+}
+
+.css-height-325 { 
+	height: 325px; 
+}
+
+.css-height-350 { 
+	height: 350px; 
+}
+
+.css-height-375 { 
+	height: 375px; 
+}
+
+.css-height-400 { 
+	height: 400px; 
+}
+
+.css-height-425 { 
+	height: 425px; 
+}
+
+.css-height-450 { 
+	height: 450px; 
+}
+
+.css-height-475 { 
+	height: 475px; 
+}
+
+.css-height-500 { 
+	height: 500px; 
+}
+
+.css-height-525 { 
+	height: 525px; 
+}
+
+.css-height-550 { 
+	height: 550px; 
+}
+
+.css-height-575 { 
+	height: 575px; 
+}
+
+.css-height-600 { 
+	height: 600px; 
+}
 
 /* Document ---------------------------------------------- */
 
@@ -135,7 +176,7 @@ h2 {
 h3 {
     font-size: 1.7rem;
     font-weight: 400;
-	text-transform:none !important;
+	text-transform: none !important;
 	line-height: normal;
 }
 
@@ -148,7 +189,7 @@ h4{
 h5 {
 	font-size: 1.3em;
 	font-weight:400;
-	text-transform:none !important;
+	text-transform: none !important;
 	line-height: normal;
 }
 
