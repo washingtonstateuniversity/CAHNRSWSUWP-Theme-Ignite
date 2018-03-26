@@ -1,6 +1,6 @@
 <div class="news-item promo-list-item<?php if ( ! empty( $post->post_images ) ) : ?> has-image<?php endif; ?>"><?php if ( ! empty( $post->post_images ) ) : ?>
 		<div class="image-wrapper">
-			<img src="<?php echo esc_url( CAHNRSIGNITEURL . 'images/image-square.gif' ); ?>" style="background-image:url(<?php echo esc_url( $post->post_images['medium'] ); ?>);" alt="<?php echo esc_html( htmlspecialchars( strip_tags ( $post->post_title ) ) ); ?>" />
+			<img src="<?php echo esc_url( CAHNRSIGNITEURL . 'images/image-square.gif' ); ?>" style="background-image:url(<?php echo esc_url( $post->post_images['medium'] ); ?>);" alt="<?php echo esc_html( htmlspecialchars( wp_strip_all_tags( $post->post_title ) ) ); ?>" />
 		</div>
 	<?php endif; ?>
 	<div class="caption">
