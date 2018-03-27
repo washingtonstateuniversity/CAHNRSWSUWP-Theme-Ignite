@@ -1,4 +1,4 @@
-<div class="ignite-slide <?php echo esc_html( $slideshow['height_class'] ); ?><?php if ( $slide['index'] === 0 ) : ?> active<?php endif; ?>">
+<div class="ignite-slide <?php echo esc_html( $slideshow['height_class'] ); ?><?php if ( 0 === $slide['index'] ) : ?> active<?php endif; ?>">
 	<div class="ignite-slide-image-wrapper">
 		<div class="ignite-slide-image" style="background-image:url(<?php echo esc_url( $slide['image'] ); ?>);">
 			<?php echo esc_html( $slide['alt'] ); ?>
