@@ -58,7 +58,7 @@
 		<div class="news-release-categories">
 			<?php foreach ( $general_topics as $name => $label ) : ?>
 			<div class="ignite-field checkbox-field ignite-field-25 checkbox-list">
-				<input id="<?php echo esc_html( $name ); ?>_topic_input" type="checkbox" name="_article_topic[]" value="<?php echo esc_html( $label ); ?>" <?php if ( in_array( $name, $topic_values, true ) || in_array( $label, $topic_values, true )  : ?><?php echo 'checked="checked"'; ?><?php endif; ?> />
+				<input id="<?php echo esc_html( $name ); ?>_topic_input" type="checkbox" name="_article_topic[]" value="<?php echo esc_html( $label ); ?>" <?php if ( in_array( $name, $topic_values, true ) || in_array( $label, $topic_values, true ) ) : ?><?php echo 'checked="checked"'; ?><?php endif; ?> />
 				<label for="<?php echo esc_html( $name ); ?>_topic_input"><?php echo esc_html( $label ); ?></label>
 			</div>
 			<?php endforeach; ?>
