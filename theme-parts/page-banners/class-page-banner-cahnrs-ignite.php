@@ -197,7 +197,7 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 
 	private function get_404_banner( $args, $context, $post_id ) {
 
-		$banner_image = $this->get_banner_image_by_slug( '404', $args, $context, $post_id, $banner_image_override );
+		$banner_image = $this->get_banner_image_by_slug( '404', $args, $context, $post_id );
 
 		ob_start();
 
