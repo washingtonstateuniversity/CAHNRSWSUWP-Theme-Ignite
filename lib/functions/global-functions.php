@@ -200,7 +200,7 @@ function ignite_get_terms( $taxonomy, $include_empty = true, $as_select = true )
 
 	} // end if
 
-	$terms = get_terms( $taxonomy, array( 'hide_empty' => false, ) );
+	$terms = get_terms( $taxonomy, array( 'hide_empty' => false ) );
 
 	if ( $as_select ) {
 
@@ -339,7 +339,7 @@ function ignite_get_widget_area( $sidebar_id, $class, $check_active = true ) {
 
 	$html = '';
 
-	$html .= '<div id="' . $class . '-widget-area widget-area-' . $class . '">' . ignite_get_sidebar( $sidebar_id, array( 'wrap' => false ) )  .'</div>';
+	$html .= '<div id="' . $class . '-widget-area widget-area-' . $class . '">' . ignite_get_sidebar( $sidebar_id, array( 'wrap' => false ) )  . '</div>';
 
 	return $html;
 
