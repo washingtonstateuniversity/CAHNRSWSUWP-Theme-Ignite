@@ -151,6 +151,8 @@ html {
 main {
 	padding-left: 2rem;
 	position: static;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 main.is-cropped-spine {
