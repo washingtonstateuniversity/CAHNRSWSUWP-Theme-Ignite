@@ -145,7 +145,9 @@ function ignite_get_part( $part, $context = 'single', $args = array(), $echo = t
 
 	if ( $echo ) {
 
+		// @codingStandardsIgnoreStart $html should already be escaped 
 		echo $html;
+		// @codingStandardsIgnoreEnd
 
 	} else {
 
@@ -288,7 +290,9 @@ function the_ignite_theme_header( $context = 'single', $args = array(), $echo = 
 
 	if ( $echo ) {
 
+		// @codingStandardsIgnoreStart $html should already be escaped
 		echo $html;
+		// @codingStandardsIgnoreEnd
 
 	} else {
 
@@ -317,7 +321,9 @@ function the_ignite_theme_footer( $context = 'single', $args = array(), $echo = 
 
 	if ( $echo ) {
 
+		// @codingStandardsIgnoreStart $html should already be escaped
 		echo $html;
+		// @codingStandardsIgnoreEnd
 
 	} else {
 
@@ -339,8 +345,63 @@ function ignite_get_widget_area( $sidebar_id, $class, $check_active = true ) {
 
 	$html = '';
 
-	$html .= '<div id="' . $class . '-widget-area widget-area-' . $class . '">' . ignite_get_sidebar( $sidebar_id, array( 'wrap' => false ) )  . '</div>';
+	$html .= '<div id="' . $class . '-widget-area widget-area-' . $class . '">' . ignite_get_sidebar( $sidebar_id, array( 'wrap' => false ) ) . '</div>';
 
 	return $html;
 
 } // End ignite_get_widget_area
+
+
+/*
+* @desc Get Theme header after filter applied
+* @since 3.0.4
+*
+* @return string Header html
+*/
+function ignite_get_template_header() {
+
+	ob_start();
+
+	get_header();
+
+	$html = ob_get_clean();
+
+	return apply_filters( 'cahnrs_ignite_part_html', $html, 'template-header', array() );
+
+} // End ignite_get_template_header
+
+/*
+* @desc Get Theme header after filter applied
+* @since 3.0.4
+*
+* @return string Header html
+*/
+function ignite_get_template_main( $is_start = true ) {
+
+	if ( $is_start ) {
+
+		if ( function_exists( 'spine_get_option' ) && ( true === spine_get_option( 'crop' ) && is_front_page() ) ) {
+
+			$is_cropped = ' is-cropped-spine';
+
+		} elseif ( get_theme_mod( '_cahnrs_ignite_global_cropped_spine', false ) ) {
+
+			$is_cropped = ' is-cropped-spine';
+
+		} else {
+
+			$is_cropped = '';
+
+		}// End if
+
+		$html = '<main id="wsuwp-main" class="spine-page-default' . $is_cropped . '">';
+
+	} else {
+
+		$html = '</main>';
+
+	} // End if
+
+	return apply_filters( 'cahnrs_ignite_part_html', $html, 'template-main', array() );
+
+} // End ignite_get_template_main
