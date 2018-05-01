@@ -2233,6 +2233,11 @@ figure {
 	height: 140px;
 }
 
+#site-actions.county-theme p {
+	margin: 0;
+	padding: 0;
+}
+
 #site-actions.county-theme {
 	text-align: right;
 }
@@ -3150,11 +3155,26 @@ body .widget_cahnrs_action_item a {
 /* Spine Overrides
 --------------------------------------------------------------- */
 body {
-	font: 17px "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-size: 17px;
 }
 
 body .max-1188 {
-	font: 18px "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-size: 18px;
+}
+
+body.ignite-font-size-small .max-1188,
+body.ignite-font-size-small {
+	font-size: 14px;
+}
+
+body.ignite-font-size-medium .max-1188,
+body.ignite-font-size-medium {
+	font-size: 16px;
+}
+
+body.ignite-font-size-large .max-1188,
+body.ignite-font-size-large {
+	font-size: 18px;
 }
 
 body:not(.has-background-image) {

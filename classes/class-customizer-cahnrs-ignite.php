@@ -1303,6 +1303,14 @@ class Customizer_CAHNRS_Ignite {
 			)
 		); // end add_setting
 
+		$wp_customize->add_setting(
+			'_cahnrs_ignite_font_size',
+			array(
+				'default'   => '',
+				'transport' => 'refresh',
+			)
+		); // end add_setting
+
 		// Add section
 
 		$section_id = '_cahnrswp_theme_options';
@@ -1325,6 +1333,22 @@ class Customizer_CAHNRS_Ignite {
 				'settings' => '_cahnrswp_theme_bg_color',
 				'type'     => 'select',
 				'choices'  => $this->get_colors( '_cahnrswp_theme_bg_color' ),
+			)
+		); // end control
+
+		$wp_customize->add_control(
+			'_cahnrs_ignite_font_size_control',
+			array(
+				'label'    => 'Font Size',
+				'section'  => $section_id,
+				'settings' => '_cahnrs_ignite_font_size',
+				'type'     => 'select',
+				'choices'  => array(
+					''  	 => 'Default',
+					'small'  => 'Small (14px)',
+					'medium' => 'Medium (16px)',
+					'large'  => 'Large (18px)', 
+				),
 			)
 		); // end control
 
@@ -2114,8 +2138,8 @@ class Customizer_CAHNRS_Ignite {
 		$wp_customize->add_section(
 			$section_id,
 			array(
-				'title'    	=> 'Layout Settings',
-				'panel' 	=> $panel,
+				'title' => 'Layout Settings',
+				'panel' => $panel,
 			)
 		); // end add_section
 
@@ -2217,10 +2241,9 @@ class Customizer_CAHNRS_Ignite {
 
 					return $show;
 
-				}
+				},
 			)
 		); // end control
-
 
 		$wp_customize->add_control(
 			$prefix . '_banner_slideshow_height_control',
@@ -2231,18 +2254,12 @@ class Customizer_CAHNRS_Ignite {
 				'type' => 'select',
 				'choices' => $this->css_heights,
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
-
 		); // end control
 
 		$wp_customize->add_control(
@@ -2253,16 +2270,11 @@ class Customizer_CAHNRS_Ignite {
 				'settings' => $prefix . '_banner_slideshow_isauto',
 				'type' => 'checkbox',
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
 		); // end control
 
@@ -2274,16 +2286,11 @@ class Customizer_CAHNRS_Ignite {
 				'settings' => $prefix . '_banner_slideshow_show_caption',
 				'type' => 'checkbox',
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
 		); // end control
 
@@ -2295,16 +2302,11 @@ class Customizer_CAHNRS_Ignite {
 				'settings' => $prefix . '_banner_slideshow_show_nav',
 				'type' => 'checkbox',
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
 		); // end control
 
@@ -2323,18 +2325,12 @@ class Customizer_CAHNRS_Ignite {
 					'1500' => '1.5 Second',
 				),
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
-
 		); // end control
 
 		$wp_customize->add_control(
@@ -2356,18 +2352,12 @@ class Customizer_CAHNRS_Ignite {
 					'9000' => '9 Seconds',
 				),
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
-
 		); // end control
 
 	} // End register_customizer_banner_slideshow_settings
@@ -2378,7 +2368,7 @@ class Customizer_CAHNRS_Ignite {
 	**/
 	protected function get_colors( $context = 'general', $add_default = true, $add_none = true, $none_value = 'transparent' ) {
 
-		$colors =  $this->colors;
+		$colors = $this->colors;
 
 		if ( $add_none ) { // and default option
 

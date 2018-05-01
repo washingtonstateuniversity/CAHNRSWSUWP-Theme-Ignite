@@ -16,5 +16,5 @@ echo ignite_get_template_main();
 	</div>
 </header>
 <nav id="site-actions" class="county-theme">
-	<a href="https://cahnrs.wsu.edu">Calendar</a><a href="https://cahnrs.wsu.edu">Directory</a><a href="https://cahnrs.wsu.edu">Search</a>
+	<?php echo wp_kses_post( ignite_get_sidebar( 'site-actions', array( 'wrap' => '' ) ) ); ?>
 </nav>
