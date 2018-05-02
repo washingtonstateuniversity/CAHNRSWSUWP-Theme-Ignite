@@ -20,6 +20,10 @@
 	<div  class="ignite-field-set">
 		<h2>Story Placement: <span>(Required)</span></h2>
 		<div class="news-placement">
+<div class="ignite-field checkbox-field <?php if ( ! current_user_can( 'administrator' ) ) : ?><?php echo esc_html( 'admin-hidden-field' ); ?><?php endif; ?>">
+				<input id="college-wide_distribute" type="checkbox" name="_article_distribute" value="college-home" <?php checked( 'college-home', $distribute ) ?> />
+				<label for="college-wide_distribute">College Home</label>
+			</div>
 			<div class="ignite-field checkbox-field">
 				<input id="college-wide_distribute" type="checkbox" name="_article_distribute" value="college-wide" <?php checked( 'college-wide', $distribute ) ?> />
 				<label for="college-wide_distribute">College Wide</label>
