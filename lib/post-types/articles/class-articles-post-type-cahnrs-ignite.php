@@ -319,7 +319,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 		$args['meta_relation'] = ( isset( $_GET['meta_relation'] ) ) ? sanitize_text_field( $_GET['meta_relation'] ) : 'OR';
 
-		$meta_query = array( 'relation' => $args['meta_relation']);
+		$meta_query = array( 'relation' => $args['meta_relation'] );
 
 		if ( ! empty( $_GET['article_placement'] ) ) {
 
@@ -417,7 +417,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'taxonomies'         => array( 'category', 'post_tag' ),
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'revisions', 'post-formats', 'excerpt' )
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'revisions', 'post-formats', 'excerpt' ),
 		);
 
 		register_post_type( 'article', $args );
@@ -431,7 +431,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 			$post_id = $post->ID;
 
-			$html .= $this->get_edit_form( $post_id );
+			$html = $this->get_edit_form( $post_id );
 
 			echo $html;
 
@@ -445,7 +445,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 		$distribute = get_post_meta( $post_id, '_article_distribute', true );
 
 		if ( is_array( $distribute ) ) {
-			
+
 			$distribute = $distribute[0];
 
 		}
@@ -453,7 +453,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 		$placement = get_post_meta( $post_id, '_article_placement', true );
 
 		if ( ! is_array( $placement ) ) {
-			
+
 			$placement = array( 'news-feed' );
 
 		}
@@ -467,7 +467,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 		$topic_values = get_post_meta( $post_id, '_article_topic', true );
 
 		if ( ! is_array( $topic_values ) ) {
-			
+
 			$topic_values = array();
 
 		}
@@ -475,7 +475,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 		$subjects_values = get_post_meta( $post_id, '_article_subject', true );
 
 		if ( ! is_array( $subjects_values ) ) {
-			
+
 			$subjects_values = array();
 
 		}
@@ -488,8 +488,8 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 		$html = '';
 
-		if ( ! is_array( $locations ) ) {
-			
+		if ( empty( $locations ) ) {
+
 			$locations = array();
 
 		}
@@ -517,15 +517,15 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 				$index = ( $i - 1 );
 
-				if ( ! emtpy( $sources_meta['name_' . $index ]  ) ) {
+				if ( ! emtpy( $sources_meta[ 'name_' . $index ]  ) ) {
 
-					$sources[ $index ]['name'] = $sources_meta['name_' . $index ];
+					$sources[ $index ]['name'] = $sources_meta[ 'name_' . $index ];
 
 				} // End if
 
 				if ( ! emtpy( $sources_meta['info_' . $index ]  ) ) {
 
-					$sources[ $index ]['info'] = $sources_meta['name_' . $index ];
+					$sources[ $index ]['info'] = $sources_meta[ 'name_' . $index ];
 
 				} // End if
 
