@@ -133,6 +133,12 @@ function ignite_get_part( $part, $context = 'single', $args = array(), $echo = t
 			$html .= $header->get_part( $context, $args );
 			break;
 
+		case 'single-content':
+			ignite_load_class( 'lib/theme-parts/content/single-content/class-single-content-ignite.php', true );
+			$content = new Single_Content_Ignite();
+			$html .= $content->get_part( $context, $args );
+			break;
+
 		case 'footer':
 			ignite_load_class( 'lib/theme-parts/footer/class-footer-ignite.php', true );
 			$footer = new Footer_Ignite();
@@ -145,7 +151,7 @@ function ignite_get_part( $part, $context = 'single', $args = array(), $echo = t
 
 	if ( $echo ) {
 
-		// @codingStandardsIgnoreStart $html should already be escaped 
+		// @codingStandardsIgnoreStart $html should already be escaped
 		echo $html;
 		// @codingStandardsIgnoreEnd
 

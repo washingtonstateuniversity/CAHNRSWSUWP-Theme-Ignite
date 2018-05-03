@@ -10,12 +10,6 @@ require_once CAHNRSIGNITEPATH . 'theme-parts/secondary-menu/class-secondary-menu
 $secondary_menu = new Secondary_Menu_Ignite();
 $secondary_menu->the_menu( 'page' );
 
-ob_start();
-
-require locate_template( 'includes/content/single-page.php', false );
-
-$html = ob_get_clean();
-
-echo apply_filters( 'cahnrs_ignite_page_html', $html );
+ignite_get_part( 'single-content', 'page' );
 
 ignite_get_part( 'footer', 'page' );
