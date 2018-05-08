@@ -402,11 +402,11 @@ $global_nav = array(
 			),
 			array(
 				'label' => 'Connect With Us',
-				'link' => 'http://cahnrs.wsu.edu/alumni/meet-the-team/dev-team/',
+				'link' => 'http://cahnrs.wsu.edu/alumni/meet-the-team/',
 				'menu-items' => array(
 					array(
 						'label' => 'Meet Our Staff',
-						'url' => 'http://cahnrs.wsu.edu/alumni/meet-the-team/dev-team/',
+						'url' => 'http://cahnrs.wsu.edu/alumni/meet-the-team/',
 					),
 					array(
 						'label' => 'Scholarship Donor Profiles',
