@@ -125,6 +125,14 @@ class CSS_CAHNRS_Ignite {
 
 		$cahnrswp_header_horizontal_nav_mobile = get_theme_mod( '_cahnrswp_header_horizontal_nav_mobile', '' );
 
+		$font_size = get_theme_mod( '_cahnrs_ignite_font_size', '' );
+
+		if ( ! empty( $font_size ) ) {
+
+			$classes[] = 'ignite-font-size-' . $font_size;
+
+		} // End if
+
 		if ( 'disable' === $cahnrswp_theme_use_spine ) {
 
 			$classes[] = 'disable-spine';

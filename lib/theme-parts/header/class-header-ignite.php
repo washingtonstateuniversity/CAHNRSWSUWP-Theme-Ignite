@@ -21,21 +21,30 @@ class Header_Ignite extends Abstract_Theme_Part {
 
 	public function get_the_part( $context = 'single', $args = array() ) {
 
-		$html = '';
+		// Put the empty html through a fitler. Use this to override header for a give context
+		$html = apply_filters( 'cahnrs_ignite_header_html', '', $context, $args );
 
 		$settings = $this->get_settings( $this->ctmzr_fields, $args );
 
-		switch ( $settings['_cahnrswp_header_type'] ) {
+		// If html exists (from filter) skip this
+		if ( empty( $html ) ) {
 
-			case 'default':
-				$html .= $this->get_default_header( $settings, $context, $args );
-				break;
+			switch ( $settings['_cahnrswp_header_type'] ) {
 
-			case 'cahnrs-college':
-				$html .= $this->get_college_header( $settings, $context, $args );
-				break;
+				case 'default':
+					$html .= $this->get_default_header( $settings, $context, $args );
+					break;
 
-		} // End switch
+				case 'cahnrs-college':
+					$html .= $this->get_college_header( $settings, $context, $args );
+					break;
+
+				case 'county':
+					$html .= $this->get_county_header( $context, $args );
+					break;
+
+			} // End switch
+		} // End if
 
 		$html .= ignite_get_widget_area( 'header_after', 'header-after' );
 
@@ -281,6 +290,32 @@ class Header_Ignite extends Abstract_Theme_Part {
 		return $html;
 
 	} // End get_global_top_bar
+
+
+	/*
+	* @desc Get html for county header
+	* @since 2.0.3
+	*
+	* @param string $context Where the header is being displayed
+	* @param array $args Args provided with the header
+	*
+	* @return string html County header html
+	*/
+	protected function get_county_header( $context, $args ) {
+
+		$site_url = get_bloginfo( 'url' );
+
+		$site_title = get_bloginfo( 'title' );
+
+		ob_start();
+
+		include __DIR__ . '/county-header/header-frontpage.php';
+
+		$html = ob_get_clean();
+
+		return $html;
+
+	} // End get_county_header
 
 
 	protected function get_template_parts() {
