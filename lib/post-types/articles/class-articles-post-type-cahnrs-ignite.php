@@ -32,7 +32,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 		add_action( 'init', array( $this, 'register_post_type' ) );
 
-		add_action( 'edit_form_after_title', array( $this, 'add_feature_settings' ), 12 );
+		add_action( 'edit_form_after_title', array( $this, 'add_feature_settings' ), 9 );
 
 		add_action( 'save_post_article', array( $this, 'save_post' ), 10, 3 );
 
@@ -523,7 +523,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 				} // End if
 
-				if ( ! emtpy( $sources_meta['info_' . $index ]  ) ) {
+				if ( ! empty( $sources_meta['info_' . $index ] ) ) {
 
 					$sources[ $index ]['info'] = $sources_meta[ 'name_' . $index ];
 
@@ -598,7 +598,6 @@ class Articles_Post_Type_CAHNRS_Ignite {
 				update_post_meta( $post_id, $key, $val );
 
 			} // End if
-
 		} // End foreach
 
 	} // End save_post
