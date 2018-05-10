@@ -517,7 +517,7 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 				$index = ( $i - 1 );
 
-				if ( ! emtpy( $sources_meta[ 'name_' . $index ]  ) ) {
+				if ( ! empty( $sources_meta[ 'name_' . $index ]  ) ) {
 
 					$sources[ $index ]['name'] = $sources_meta[ 'name_' . $index ];
 
