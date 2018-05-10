@@ -1,23 +1,5 @@
 <div class="ignite-post-editor">
 	<div  class="ignite-field-set">
-		<h2>Media Contact</h2>
-		<div class="ignite-field">
-			<label>Name & Title</label>
-<input type="text" name="_sources[0][name]" value="<?php if ( ! empty( $sources[0]['name'] ) ) : ?><?php echo esc_html( $sources[0]['name'] ); ?><?php endif; ?>" />
-		</div>
-		<div class="ignite-field">
-			<label>Email</label>
-			<input type="text" name="_sources[0][email]" value="<?php if ( ! empty( $sources[0]['email'] ) ) : ?><?php echo esc_html( $sources[0]['email'] ); ?><?php endif; ?>" />
-		</div>
-		<div class="ignite-field">
-			<label>Phone</label>
-			<input type="text" name="_sources[0][phone]" value="<?php if ( ! empty( $sources[0]['phone'] ) ) : ?><?php echo esc_html( $sources[0]['phone'] ); ?><?php endif; ?>" />
-		</div><?php if ( ! empty( $sources[0]['info'] ) ) : ?><div class="ignite-field">
-			<label>Info (old)</label>
-			<input type="text" name="_sources[0][info]" value="<?php echo esc_html( $sources[0]['info'] ); ?>" />
-		</div><?php endif; ?>
-	</div>
-	<div  class="ignite-field-set">
 		<h2>Story Placement: <span>(Required)</span></h2>
 		<div class="news-placement">
 <div class="ignite-field checkbox-field <?php if ( ! current_user_can( 'administrator' ) ) : ?><?php echo esc_html( 'admin-hidden-field' ); ?><?php endif; ?>">
