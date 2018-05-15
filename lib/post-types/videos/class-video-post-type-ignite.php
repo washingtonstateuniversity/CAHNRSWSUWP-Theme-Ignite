@@ -14,7 +14,9 @@ class Video_Post_Type_Ignite extends Post_Type_Ignite {
 
 		add_filter( 'the_content', array( $this, 'add_video_player' ), 1 );
 
-		add_filter( 'ignite-post-image', array( $this, 'filter_post_image' ), 1, 3 );
+		add_filter( 'ignite_post_image', array( $this, 'filter_post_image' ), 1, 3 );
+
+		add_filter( 'cpb_image_array', array( $this, 'filter_cpb_image' ), 10, 2 );
 
 	} // End __construct
 
@@ -78,7 +80,7 @@ class Video_Post_Type_Ignite extends Post_Type_Ignite {
 	} // End add_edit_form
 
 
-	public function save( $post_id) {
+	public function save( $post_id ) {
 
 		$save_fields = array(
 			'_video_id'      => 'text',
@@ -89,7 +91,7 @@ class Video_Post_Type_Ignite extends Post_Type_Ignite {
 
 			$clean_fields = $this->get_clean_fields( $save_fields );
 
-			if ( empty( $clean_fields['_video_img_src'] ) ) {
+			if ( empty( $clean_fields['_video_img_src'] ) && ! empty( $clean_fields['_video_id'] ) ) {
 
 				$video_id = $this->get_video_id_from_url( $clean_fields['_video_id'] );
 
@@ -163,6 +165,43 @@ class Video_Post_Type_Ignite extends Post_Type_Ignite {
 	} // End filter_post_image
 
 
+	/**
+	 * @dec Filters pagebuilder image used for items
+	 * @since 2.0.3
+	 *
+	 * @param array $image_array Array of image properties
+	 * @param int $post_id Current post id
+	 *
+	 * @return array Modified image array
+	 */
+	public function filter_cpb_image( $image_array, $post_id ) {
+
+		if ( 'video' === get_post_type( $post_id ) ) {
+
+			if ( empty( $image_array['src'] ) ) {
+
+				$video_img = get_post_meta( $post_id, '_video_img_src', true );
+
+				// Included for legacy support
+				if ( empty( $video_img ) ) {
+
+					$video_img = get_post_meta( $post_id, '_default_img_src', true );
+
+				} // End if
+
+				if ( ! empty( $video_img ) ) {
+
+					$image_array['src'] = $video_img;
+
+				} // End if
+			} // End if
+		} // End if
+
+		return $image_array;
+
+	} // End filter_cpb_image
+
+
 	protected function get_video( $post_id ) {
 
 		$video = array(
@@ -190,7 +229,6 @@ class Video_Post_Type_Ignite extends Post_Type_Ignite {
 				$video['id'] = $video_legacy['video_url'];
 
 			} // End if
-
 		} // End if
 
 		if ( empty( $video['img_src'] ) ) {
