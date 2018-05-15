@@ -78,6 +78,8 @@ class Pagination_CAHNRS_Ignite {
 
 	protected function get_display_default( $args = array() ) {
 
+		$html = '';
+
 		$start_index = $this->get_index_start();
 
 		$end_index = $this->get_index_end( $start_index );
@@ -86,7 +88,7 @@ class Pagination_CAHNRS_Ignite {
 
 		$classes = array();
 
-		if ( ! empty( $args['is_after'])) {
+		if ( ! empty( $args['is_after'] ) ) {
 
 			$classes[] = 'is-after';
 
@@ -161,7 +163,7 @@ class Pagination_CAHNRS_Ignite {
 
 	protected function get_index_last() {
 
-		$last_index = ( ( $this->pages > 3 ) && ( ( $this->page + 1 ) < $this->pages )  ) ? $this->pages : false;
+		$last_index = ( ( $this->pages > 3 ) && ( ( $this->page + 1 ) < $this->pages ) ) ? $this->pages : false;
 
 		return $last_index;
 
@@ -186,14 +188,9 @@ class Pagination_CAHNRS_Ignite {
 
 		$end_val = ( $start_index + 2 );
 
-		if ( ( $this->pages <= $end_val ) && ( $this->pages > 3 ) ) {
-
-
-		} // End if
-
 		$end_index = ( $this->pages >= $end_val ) ? $end_val : $this->pages;
 
-		$last_index = ( ( $this->pages > 3 ) && ( ( $this->page + 1 ) < $this->pages )  ) ? $this->pages : false;
+		$last_index = ( ( $this->pages > 3 ) && ( ( $this->page + 1 ) < $this->pages ) ) ? $this->pages : false;
 
 		$html = '';
 
@@ -242,7 +239,7 @@ class Pagination_CAHNRS_Ignite {
 
 		if ( $is_shortcode ) {
 
-			$url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI];
+			$url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER[ HTTP_HOST ] . $_SERVER[ REQUEST_URI ];
 
 			$url_parts = parse_url( $url );
 

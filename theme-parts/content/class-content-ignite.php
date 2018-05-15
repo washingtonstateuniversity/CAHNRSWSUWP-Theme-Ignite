@@ -31,7 +31,9 @@ class Content_Ignite extends Theme_Part_Ignite {
 
 		$html .= '</div>';
 
+		// @codingStandardsIgnoreStart
 		echo apply_filters( 'cahnrs_ignite_page_html', $html );
+		// @codingStandardsIgnoreEnd
 
 	} // End the_content
 
@@ -44,7 +46,7 @@ class Content_Ignite extends Theme_Part_Ignite {
 
 		$pagination = new Pagination_CAHNRS_Ignite( max( 1, get_query_var( 'paged' ) ), get_query_var( 'posts_per_page' ), $wp_query->found_posts );
 
-		$html .= $pagination->get_pagination();
+		$html = $pagination->get_pagination();
 
 		if ( have_posts() ) {
 
@@ -56,7 +58,7 @@ class Content_Ignite extends Theme_Part_Ignite {
 
 				$image = ignite_get_post_image( get_the_ID(), 'medium' );
 
-				$image = apply_filters( 'ignite-post-image', $image, get_the_ID(), get_post_type() );
+				$image = apply_filters( 'ignite_post_image', $image, get_the_ID(), get_post_type() );
 
 				if ( $image ) {
 

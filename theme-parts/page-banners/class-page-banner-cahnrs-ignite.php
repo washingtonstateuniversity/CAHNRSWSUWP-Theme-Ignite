@@ -75,7 +75,9 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 
 		} // End if
 
+		// @codingStandardsIgnoreStart Already escaped
 		echo apply_filters( 'cahnrs_ignite_page_html', $html );
+		// @codingStandardsIgnoreEnd
 
 	} // End the_banner
 
@@ -100,6 +102,8 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 
 
 	protected function get_banner_type( $args, $context, $post_id ) {
+
+		$type = '';
 
 		if ( empty( $args['type'] ) ) {
 
@@ -346,7 +350,7 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 
 			$image = get_theme_mod( '_cahnrswp_ignite_banner_' . $term->taxonomy . '_image', '' );
 
-		} else if ( is_singular() ) {
+		} elseif ( is_singular() ) {
 
 			$post_remove_banner = get_post_meta( $post_id, '_remove_page_banner', true );
 
@@ -354,7 +358,7 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 
 					$image = $this->get_post_image( $post_id, 'full', $args, $context );
 
-			} else if ( is_front_page() ) {
+			} elseif ( is_front_page() ) {
 
 				$image = get_theme_mod( '_cahnrswp_ignite_fronpage_feature_image', '' );
 
@@ -501,7 +505,7 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 
 				$value = get_post_meta( $post_id, '_banner_' . $key, true );
 
-			} else if ( is_front_page() ) {
+			} elseif ( is_front_page() ) {
 
 				$value = get_theme_mod( '_cahnrswp_ignite_fronpage_feature_' . $key, $default );
 
