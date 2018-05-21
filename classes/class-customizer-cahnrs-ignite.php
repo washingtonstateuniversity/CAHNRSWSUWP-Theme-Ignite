@@ -156,6 +156,7 @@ class Customizer_CAHNRS_Ignite {
 			'video' => 'Videos',
 			'degree' => 'Degrees',
 			'indexed_content' => 'Indexed Content',
+			'web_publication' => 'Web Publication',
 		);
 
 		foreach ( $post_types as $post_type => $label ) {
@@ -1101,7 +1102,7 @@ class Customizer_CAHNRS_Ignite {
 
 					return $show;
 
-				}
+				},
 			)
 		); // end control
 
@@ -1253,44 +1254,6 @@ class Customizer_CAHNRS_Ignite {
 	} // end customize_frontpage
 
 
-	/*private function customize_banner_play_video( $wp_customize, $section_id ) {
-
-		$wp_customize->add_setting(
-			'_cahnrswp_ignite_play_video_banner_img',
-			array(
-				'default'   => '',
-				'transport' => 'refresh',
-			)
-		); // end add_setting
-
-		$wp_customize->add_control(
-			new WP_Customize_Image_Control(
-				$wp_customize,
-				'_cahnrswp_ignite_play_video_banner_img_control',
-			   	array(
-				   	'label'      		=> 'Play Video Image',
-				   	'section'    		=> $section_id,
-				   	'settings'   		=> '_cahnrswp_ignite_play_video_banner_img',
-					'active_callback' => function() use ( $wp_customize ) {
-
-						$show_with = array( 'video-play-banner' );
-
-						$show = false;
-
-						$type = $wp_customize->get_setting( '_cahnrswp_ignite_fronpage_feature' )->value();
-
-						$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
-						return $show;
-
-					}
-			   	)
-		   	)
-	   	);
-
-	} // End customize_banner_play_video*/
-
-
 	private function customize_theme( $wp_customize, $panel ) {
 
 		$wp_customize->add_setting(
@@ -1341,6 +1304,14 @@ class Customizer_CAHNRS_Ignite {
 			)
 		); // end add_setting
 
+		$wp_customize->add_setting(
+			'_cahnrs_ignite_font_size',
+			array(
+				'default'   => '',
+				'transport' => 'refresh',
+			)
+		); // end add_setting
+
 		// Add section
 
 		$section_id = '_cahnrswp_theme_options';
@@ -1363,6 +1334,22 @@ class Customizer_CAHNRS_Ignite {
 				'settings' => '_cahnrswp_theme_bg_color',
 				'type'     => 'select',
 				'choices'  => $this->get_colors( '_cahnrswp_theme_bg_color' ),
+			)
+		); // end control
+
+		$wp_customize->add_control(
+			'_cahnrs_ignite_font_size_control',
+			array(
+				'label'    => 'Font Size',
+				'section'  => $section_id,
+				'settings' => '_cahnrs_ignite_font_size',
+				'type'     => 'select',
+				'choices'  => array(
+					''       => 'Default',
+					'small'  => 'Small (14px)',
+					'medium' => 'Medium (16px)',
+					'large'  => 'Large (18px)', 
+				),
 			)
 		); // end control
 
@@ -1692,7 +1679,8 @@ class Customizer_CAHNRS_Ignite {
 				'type'     => 'select',
 				'choices'  => array(
 					'default' => 'Basic Header',
-					'cahnrs-college' => 'College Header'
+					'cahnrs-college' => 'College Header',
+					'county' => 'Extension County',
 				),
 			)
 		); // end control
@@ -1812,33 +1800,32 @@ class Customizer_CAHNRS_Ignite {
 			new WP_Customize_Image_Control(
 				$wp_customize,
 				'_cahnrswp_header_bg_image_control',
-			   	array(
-				   	'label'      => 'Header Background Image',
-				   	'section'    => $section_id,
-				   	'settings'   => '_cahnrswp_header_bg_image',
-			   	)
-		   	)
-	   	);
-
+				array(
+					'label'      => 'Header Background Image',
+					'section'    => $section_id,
+					'settings'   => '_cahnrswp_header_bg_image',
+				)
+			)
+		);
 
 		$wp_customize->add_control(
 			'_cahnrswp_header_bg_image_size_control',
 			array(
-				'label'    => 'Header Background Image Size',
-				'section'  => $section_id,
+				'label' => 'Header Background Image Size',
+				'section' => $section_id,
 				'settings' => '_cahnrswp_header_bg_image_size',
-				'type'     => 'select',
+				'type' => 'select',
 				'choices'  => array(
-					'default' 	=> 'Not Set',
-					'cover' 	=> 'Cover',
-					'contain' 	=> 'Contain',
-					'auto' 		=> 'Auto',
-					'auto 100%'	=> 'Auto 100%',
-					'100% auto'	=> '100% Auto',
+					'default' => 'Not Set',
+					'cover' => 'Cover',
+					'contain' => 'Contain',
+					'auto' => 'Auto',
+					'auto 100%' => 'Auto 100%',
+					'100% auto' => '100% Auto',
 					'100% 100%' => '100% 100%',
-					'auto 90%'	=> 'Auto 90%',
-					'90% auto'	=> '90% Auto',
-					'90% 90%' 	=> '90% 90%',
+					'auto 90%' => 'Auto 90%',
+					'90% auto' => '90% Auto',
+					'90% 90%' => '90% 90%',
 				),
 			)
 		); // end control
@@ -1851,16 +1838,16 @@ class Customizer_CAHNRS_Ignite {
 				'settings' => '_cahnrswp_header_bg_image_position',
 				'type'     => 'select',
 				'choices'  => array(
-					'default' 			=> 'Not Set',
-					'center' 			=> 'Center',
-					'left top' 			=> 'Left Top',
-					'left center' 		=> 'Left Center',
-					'left bottom' 		=> 'Left Bottom',
-					'right top' 		=> 'Right Top',
-					'right center' 		=> 'Right Center',
-					'right bottom' 		=> 'Right Bottom',
-					'center top' 		=> 'Center Top',
-					'center bottom' 	=> 'Center Bottom',
+					'default' => 'Not Set',
+					'center' => 'Center',
+					'left top' => 'Left Top',
+					'left center' => 'Left Center',
+					'left bottom' => 'Left Bottom',
+					'right top' => 'Right Top',
+					'right center' => 'Right Center',
+					'right bottom' => 'Right Bottom',
+					'center top' => 'Center Top',
+					'center bottom' => 'Center Bottom',
 				),
 			)
 		); // end control
@@ -1880,7 +1867,7 @@ class Customizer_CAHNRS_Ignite {
 
 					return ( in_array( $value, $show_with, true ) ) ? true : false;
 
-				} // End active_callback
+				}, // End active_callback
 			)
 		); // end control
 
@@ -1902,7 +1889,7 @@ class Customizer_CAHNRS_Ignite {
 
 					return ( in_array( $value, $show_with, true ) ) ? true : false;
 
-				} // End active_callback
+				}, // End active_callback
 			)
 		); // end control
 
@@ -1961,13 +1948,13 @@ class Customizer_CAHNRS_Ignite {
 			new WP_Customize_Image_Control(
 				$wp_customize,
 				'_cahnrswp_header_banner_img_control',
-			   	array(
-				   	'label'      => 'Banner Image',
-				   	'section'    => $section_id,
-				   	'settings'   => '_cahnrswp_header_banner_img',
-			   	)
-		   	)
-	   	);
+				array(
+					'label' => 'Banner Image',
+					'section' => $section_id,
+					'settings' => '_cahnrswp_header_banner_img',
+				)
+			)
+		);
 
 		$wp_customize->add_control(
 			'_cahnrswp_header_banner_img_alt_control',
@@ -2115,8 +2102,8 @@ class Customizer_CAHNRS_Ignite {
 		$wp_customize->add_section(
 			$section_id,
 			array(
-				'title'    	=> 'Footer Settings',
-				'panel' 	=> $panel,
+				'title' => 'Footer Settings',
+				'panel' => $panel,
 			)
 		); // end add_section
 
@@ -2147,21 +2134,15 @@ class Customizer_CAHNRS_Ignite {
 			)
 		); // end add_setting
 
-
-		// Add section
-
 		$section_id = '_cahnrswp_layout_options';
 
 		$wp_customize->add_section(
 			$section_id,
 			array(
-				'title'    	=> 'Layout Settings',
-				'panel' 	=> $panel,
+				'title' => 'Layout Settings',
+				'panel' => $panel,
 			)
 		); // end add_section
-
-
-		// Add Controls
 
 		$wp_customize->add_control(
 			'_cahnrswp_enable_spine_builder_control',
@@ -2261,157 +2242,123 @@ class Customizer_CAHNRS_Ignite {
 
 					return $show;
 
-				}
+				},
 			)
 		); // end control
-
 
 		$wp_customize->add_control(
 			$prefix . '_banner_slideshow_height_control',
 			array(
-				'label'    => 'Slideshow Height',
-				'section'  => $section_id,
+				'label' => 'Slideshow Height',
+				'section' => $section_id,
 				'settings' => $prefix . '_banner_slideshow_height',
-				'type'     => 'select',
-				'choices'  => $this->css_heights,
+				'type' => 'select',
+				'choices' => $this->css_heights,
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
-
 		); // end control
 
 		$wp_customize->add_control(
 			$prefix . '_banner_slideshow_isauto_control',
 			array(
-				'label'    => 'Auto Rotate',
-				'section'  => $section_id,
+				'label' => 'Auto Rotate',
+				'section' => $section_id,
 				'settings' => $prefix . '_banner_slideshow_isauto',
-				'type'     => 'checkbox',
+				'type' => 'checkbox',
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
 		); // end control
 
 		$wp_customize->add_control(
 			$prefix . '_banner_slideshow_show_caption_control',
 			array(
-				'label'    => 'Show Caption',
-				'section'  => $section_id,
+				'label' => 'Show Caption',
+				'section' => $section_id,
 				'settings' => $prefix . '_banner_slideshow_show_caption',
-				'type'     => 'checkbox',
+				'type' => 'checkbox',
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
 		); // end control
 
 		$wp_customize->add_control(
 			$prefix . '_banner_slideshow_show_nav_control',
 			array(
-				'label'    => 'Show Nav',
-				'section'  => $section_id,
+				'label' => 'Show Nav',
+				'section' => $section_id,
 				'settings' => $prefix . '_banner_slideshow_show_nav',
-				'type'     => 'checkbox',
+				'type' => 'checkbox',
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
 		); // end control
 
 		$wp_customize->add_control(
 			$prefix . '_banner_slideshow_speed_control',
 			array(
-				'label'    => 'Slideshow Speed (Change)',
-				'section'  => $section_id,
+				'label' => 'Slideshow Speed (Change)',
+				'section' => $section_id,
 				'settings' => $prefix . '_banner_slideshow_speed',
-				'type'     => 'select',
-				'choices'  => array(
-					'500' 	=> '0.5 Seconds',
-					'700' 	=> '0.7 Seconds',
-					'1000' 	=> '1 Second',
-					'1200' 	=> '1.2 Seconds',
-					'1500' 	=> '1.5 Second',
+				'type' => 'select',
+				'choices' => array(
+					'500' => '0.5 Seconds',
+					'700' => '0.7 Seconds',
+					'1000' => '1 Second',
+					'1200' => '1.2 Seconds',
+					'1500' => '1.5 Second',
 				),
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
-
 		); // end control
 
 		$wp_customize->add_control(
 			$prefix . '_banner_slideshow_delay_control',
 			array(
-				'label'    => 'Slideshow Delay',
-				'section'  => $section_id,
+				'label' => 'Slideshow Delay',
+				'section' => $section_id,
 				'settings' => $prefix . '_banner_slideshow_delay',
-				'type'     => 'select',
-				'choices'  => array(
-					'1000' 	=> '1 Second',
-					'2000' 	=> '2 Seconds',
-					'3000' 	=> '3 Seconds',
-					'4000' 	=> '4 Seconds',
-					'5000' 	=> '5 Seconds',
-					'6000' 	=> '6 Seconds',
-					'7000' 	=> '7 Seconds',
-					'8000' 	=> '8 Seconds',
-					'9000' 	=> '9 Seconds',
+				'type' => 'select',
+				'choices' => array(
+					'1000' => '1 Second',
+					'2000' => '2 Seconds',
+					'3000' => '3 Seconds',
+					'4000' => '4 Seconds',
+					'5000' => '5 Seconds',
+					'6000' => '6 Seconds',
+					'7000' => '7 Seconds',
+					'8000' => '8 Seconds',
+					'9000' => '9 Seconds',
 				),
 				'active_callback' => function() use ( $wp_customize, $show_key, $show_with ) {
-
 					$show = false;
-
 					$type = $wp_customize->get_setting( $show_key )->value();
-
 					$show = ( in_array( $type, $show_with, true ) ) ? true : false;
-
 					return $show;
-
-				}
+				},
 			)
-
 		); // end control
 
 	} // End register_customizer_banner_slideshow_settings
@@ -2422,7 +2369,7 @@ class Customizer_CAHNRS_Ignite {
 	**/
 	protected function get_colors( $context = 'general', $add_default = true, $add_none = true, $none_value = 'transparent' ) {
 
-		$colors =  $this->colors;
+		$colors = $this->colors;
 
 		if ( $add_none ) { // and default option
 

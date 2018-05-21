@@ -1,5 +1,5 @@
 <div id="site-content">
-	<?php while( have_posts() ) : the_post();
+	<?php while ( have_posts() ) : the_post();
 
 		$show_title = get_post_meta( get_the_ID(), '_show_title_single_ignite', true );
 

@@ -1,12 +1,12 @@
 <?php
 
 $global_nav = array(
-	'home' 		=> array(
+	'home' => array(
 		'label' => '<span>Home</span>',
 		'url' => 'http://cahnrs.wsu.edu',
 		'news_category' => '',
 	),
-	'about' 	=> array(
+	'about' => array(
 		'label' => 'About',
 		'url' => 'http://cahnrs.wsu.edu/about',
 		'news_category' => '',
@@ -103,7 +103,7 @@ $global_nav = array(
 			),
 		),
 	),
-	'academics' 	=> array(
+	'academics' => array(
 		'label' => 'Academics',
 		'url' => 'http://cahnrs.wsu.edu/academics',
 		'news_category' => '',
@@ -192,7 +192,7 @@ $global_nav = array(
 			),
 		),
 	),
-	'research' 	=> array(
+	'research' => array(
 		'label' => 'Research',
 		'url' => 'http://cahnrs.wsu.edu/research',
 		'news_category' => '',
@@ -348,7 +348,7 @@ $global_nav = array(
 			),
 		),
 	),
-	'alumni' 	=> array(
+	'alumni' => array(
 		'label' => 'Alumni & Friends',
 		'url' => 'http://cahnrs.wsu.edu/alumni',
 		'news_category' => '',
@@ -402,11 +402,11 @@ $global_nav = array(
 			),
 			array(
 				'label' => 'Connect With Us',
-				'link' => 'http://cahnrs.wsu.edu/alumni/meet-the-team/dev-team/',
+				'link' => 'http://cahnrs.wsu.edu/alumni/meet-our-team/',
 				'menu-items' => array(
 					array(
 						'label' => 'Meet Our Staff',
-						'url' => 'http://cahnrs.wsu.edu/alumni/meet-the-team/dev-team/',
+						'url' => 'http://cahnrs.wsu.edu/alumni/meet-our-team/',
 					),
 					array(
 						'label' => 'Scholarship Donor Profiles',
@@ -427,7 +427,7 @@ $global_nav = array(
 			//array( 'label' => 'Events', 'url' => 'http://cahnrs.wsu.edu/events/' ),
 		),
 	),
-	'fs' 		=> array(
+	'fs' => array(
 		'label' => 'Faculty & Staff <span>Resources</span>',
 		'url' => 'http://cahnrs.wsu.edu/fs',
 		'news_category' => '',
@@ -514,7 +514,7 @@ $global_nav = array(
 				'label' => 'WORQS',
 				'url' => 'https://worqs.wsu.edu/login.aspx?ReturnUrl=%2fDefault.aspx',
 			),
-		)
+		),
 	),
 ); ?>
 <div id="college-global-navigation" class="site-header">

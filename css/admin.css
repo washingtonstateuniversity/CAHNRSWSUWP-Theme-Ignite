@@ -72,6 +72,10 @@ Media Queries
 	box-sizing: border-box;
 }
 
+.ignite-post-editor .ignite-field.admin-hidden-field {
+	display: none;
+}
+
 .ignite-post-editor .ignite-field label {
 	display: block;
 	font-size: 16px;
