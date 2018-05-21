@@ -2,6 +2,11 @@
 
 class CAHNRS_Theme_Part_Shortcode_Ignite {
 
+	// @var array $default_settings Array of default settings
+	protected $default_settings = array(
+		'part_id' => '',
+	);
+
 
 	public function __construct() {
 
@@ -21,7 +26,30 @@ class CAHNRS_Theme_Part_Shortcode_Ignite {
 
 		add_shortcode( 'cahnrs_theme_part', array( $this, 'render_shortcode' ) );
 
+		add_filter( 'cpb_shortcodes', array( $this, 'register_cpb_shortcode' ) );
+
 	} // End register_shortcode
+
+
+	/*
+	* @desc Register Shortcode with Pagebuilder
+	* @since 0.0.1
+	*/
+	public function register_cpb_shortcode( $shortcodes ) {
+
+		$default_atts = apply_filters( 'cpb_shortcode_default_atts', $this->default_settings, array(), 'cahnrs_theme_part' );
+
+		$shortcodes['cahnrs_theme_part'] = array(
+			'form_callback'         => array( $this, 'get_shortcode_form' ),
+			'label'                 => 'Theme Parts', // Label of the item
+			'render_callback'       => array( $this, 'render_shortcodee' ), // Callback to render shortcode
+			'default_atts'          => $default_atts,
+			'in_column'             => true, // Allow in column
+		);
+
+		return $shortcodes;
+
+	} // End register_cpb_shortcode
 
 
 	public function render_shortcode( $atts, $content, $tag ) {
@@ -54,6 +82,44 @@ class CAHNRS_Theme_Part_Shortcode_Ignite {
 		return $html;
 
 	} // End render_shortcode
+
+
+	/*
+	* @desc Get HTML for shortcode form
+	* @since 3.0.0
+	*
+	* @param array $atts Shortcode attributes
+	* @param string $content Shortcode content
+	*
+	* @return string HTML shortcode form output
+	*/
+	public function get_shortcode_form( $id, $settings, $content, $cpb_form ) {
+
+		$args = array(
+			'posts_per_page'   => -1,
+			'orderby'          => 'date',
+			'order'            => 'DESC',
+			'post_type'        => 'theme_part',
+			'post_status'      => 'publish',
+		);
+
+		$post_options = array();
+
+		$posts_array = get_posts( $args );
+
+		foreach ( $posts_array as $tp_post ) {
+
+			$post_options[ $tp_post->ID ] = $tp_post->post_title;
+
+		} // End foreach
+
+		$form_html = $cpb_form->select_field( \CAHNRSWP\Plugin\Pagebuilder\cpb_get_input_name( $id, true, 'part_id' ), $settings['part_id'], $post_options, 'Theme Parts' );
+
+		return array(
+			'Basic'    => $form_html,
+		);
+
+	} // End get_shortcode_form
 
 
 } // end Search_Shortcode_Ignite
