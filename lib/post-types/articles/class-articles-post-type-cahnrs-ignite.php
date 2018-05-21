@@ -433,7 +433,9 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 			$html = $this->get_edit_form( $post_id );
 
+			// @codingStandardsIgnoreStart Already escaped
 			echo $html;
+			// @codingStandardsIgnoreEnd
 
 		} // End if
 
@@ -517,13 +519,13 @@ class Articles_Post_Type_CAHNRS_Ignite {
 
 				$index = ( $i - 1 );
 
-				if ( ! empty( $sources_meta[ 'name_' . $index ]  ) ) {
+				if ( ! empty( $sources_meta[ 'name_' . $index ] ) ) {
 
 					$sources[ $index ]['name'] = $sources_meta[ 'name_' . $index ];
 
 				} // End if
 
-				if ( ! empty( $sources_meta['info_' . $index ] ) ) {
+				if ( ! empty( $sources_meta[ 'info_' . $index ] ) ) {
 
 					$sources[ $index ]['info'] = $sources_meta[ 'name_' . $index ];
 

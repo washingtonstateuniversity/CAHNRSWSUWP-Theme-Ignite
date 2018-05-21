@@ -110,6 +110,8 @@ class Functions_Ignite {
 
 		require_once __DIR__ . '/lib/post-types/indexed-content/class-indexed-content-post-type-ignite.php';
 
+		require_once __DIR__ . '/lib/post-types/web-publication/class-web-publication-post-type-ignite.php';
+
 	} // End add_post_types
 
 

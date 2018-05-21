@@ -156,6 +156,7 @@ class Customizer_CAHNRS_Ignite {
 			'video' => 'Videos',
 			'degree' => 'Degrees',
 			'indexed_content' => 'Indexed Content',
+			'web_publication' => 'Web Publication',
 		);
 
 		foreach ( $post_types as $post_type => $label ) {
@@ -1344,7 +1345,7 @@ class Customizer_CAHNRS_Ignite {
 				'settings' => '_cahnrs_ignite_font_size',
 				'type'     => 'select',
 				'choices'  => array(
-					''  	 => 'Default',
+					''       => 'Default',
 					'small'  => 'Small (14px)',
 					'medium' => 'Medium (16px)',
 					'large'  => 'Large (18px)', 
