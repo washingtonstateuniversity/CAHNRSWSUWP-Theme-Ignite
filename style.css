@@ -5,7 +5,7 @@
  Author:         CAHNRS Communications
  Author URI:     https://cahnrs.wsu.edu/communications
  Template:       spine
- Version:        2.0.3
+ Version:        2.0.4
 */
 
 /*---------------------------------------------
@@ -36,6 +36,7 @@ Headers
 News Articles
 Pagebuilder Overrides
 Pagination
+People
 Plugin Overrides
 - Tribe Events
 Post Editor
@@ -1353,6 +1354,10 @@ figure {
 	background-color: #eff0f1;
 }
 
+#site-header a {
+	text-decoration: none;
+}
+
 #site-header a:hover {
 	text-decoration: none;
 }
@@ -2252,6 +2257,7 @@ figure {
 	line-height: 12px;
 	display: inline-block;
 	box-sizing: border-box;
+	text-decoration: none;
 }
 
 #site-actions.county-theme a:first-child {
@@ -2534,6 +2540,30 @@ body .widget_cahnrs_action_item a {
 .cahnrs-pagnination.default-display .page-count {
 	margin-right: 12px;
 	font-size: 16px;
+}
+
+/* People
+--------------------------------------------------------------- */
+.wsuwp-person-container {
+	width: 24.5%;
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 40px;
+	padding: 0 6px;
+	box-sizing: border-box;
+}
+.wsuwp-person-container img {
+	width: 100%;
+	display: block;
+}
+.wsuwp-person-container .wsuwp-person-name {
+	font-weight: bold;
+	color: #981e32;
+}
+.wsuwp-person-container .wsuwp-person-position,
+.wsuwp-person-container .wsuwp-person-office,
+.wsuwp-person-container .wsuwp-person-email {
+	font-size: 14px;
 }
 
 /* Plugin Overrides
