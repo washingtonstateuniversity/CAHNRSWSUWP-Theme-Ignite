@@ -5,7 +5,7 @@ class Single_Content_Ignite {
 
 	public function get_part( $context = 'single', $args = array() ) {
 
-		$html = '<div id="site-content">';
+		$html = '';
 
 		while ( have_posts() ) {
 
@@ -31,7 +31,7 @@ class Single_Content_Ignite {
 
 		} // End while
 
-		$html .= '</div>';
+		$html = '<div id="site-content">' . apply_filters( 'ignite_post_content_single_html', $html, $context, $args ) . '</div>';
 
 		return $html;
 

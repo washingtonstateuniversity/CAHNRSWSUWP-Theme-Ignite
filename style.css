@@ -33,6 +33,7 @@ Headers
 - College Header Banner
 - College Header Horizontal Menu
 - Search
+Layouts
 News Articles
 Pagebuilder Overrides
 Pagination
@@ -2365,6 +2366,22 @@ figure {
 	}
 
 }
+
+/* Layouts
+--------------------------------------------------------------- */
+
+/* Layouts: Column Left */
+.ignite-layout-column.column-left.lc-column-one {
+	float: left;
+	width: 250px;
+}
+
+.ignite-layout-column.column-left.lc-column-two {
+	margin-left: 250px;
+	padding-left: 2rem;
+	box-sizing: border-box;
+}
+
 
 /* News Articles
 --------------------------------------------------------------- */
