@@ -411,3 +411,120 @@ function ignite_get_template_main( $is_start = true ) {
 	return apply_filters( 'cahnrs_ignite_part_html', $html, 'template-main', array() );
 
 } // End ignite_get_template_main
+
+
+/**
+ * Register banner for use in ignite pages
+ * @since 2.1.1
+ *
+ * @param string $slug Banner slug
+ * @param array $banner_args Settings for the banner
+ */
+function ignite_register_banner( $slug, $banner_args ) {
+
+	global $ignite_wp_banners;
+
+	$default_args = array(
+		'label'               => '',
+		'render_callback'     => false,
+		'customizer_callback' => false,
+		'default_args'        => array(),
+	);
+
+	$banner_args = array_merge( $default_args, $banner_args );
+
+	$ignite_wp_banners[ $slug ] = $banner_args;
+
+} // End ignite_register_banner
+
+
+/**
+ * Get registred theme banners
+ * @since 2.1.1
+ *
+ * @return array Array of banners
+ */
+function ignite_get_registered_banners( $as_select = false ) {
+
+	global $ignite_wp_banners;
+
+	if ( $as_select ) {
+
+		$select = array();
+
+		foreach ( $ignite_wp_banners as $slug => $banner ) {
+
+			$select[ $slug ] = $banner['label'];
+
+		} // End foreach
+
+		return $select;
+
+	} else {
+
+		return $ignite_wp_banners;
+
+	}// End if
+
+} 
+
+/**
+ * Get panel slug used for ignite customizer
+ * @since 2.1.1
+ *
+ * @return string Panel slug
+ */
+function ignite_get_customizer_panel_slug() {
+
+	return 'cahnrs_spine_child';
+
+} // End ignite_get_customizer_panel_slug
+
+/**
+* @desc Build custom excerpt from WP_Post object
+* @since 3.0.4
+*
+* @param WP_Post $post WP_Post object
+* @param int $words Count of words to return
+*
+* @return string Excerpt
+*/
+function ignite_get_custom_excerpt( $post, $words = 35 ) {
+
+	if ( ! empty( $post->post_excerpt ) ) {
+
+		return $post->post_excerpt;
+
+	} else {
+
+		$text = strip_shortcodes( $post->post_content );
+
+		$text = str_replace( ']]>', ']]&gt;', $text );
+
+		$text = wp_strip_all_tags( $text );
+
+		$excerpt_length = apply_filters( 'excerpt_length', $words );
+
+		$excerpt_more = apply_filters( 'excerpt_more', ' [...]' );
+
+		$words = preg_split( "/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY );
+
+		if ( count( $words ) > $excerpt_length ) {
+
+			array_pop( $words );
+
+			$text = implode( ' ', $words );
+
+			$text = $text . $excerpt_more;
+
+		} else {
+
+			$text = implode( ' ', $words );
+
+		} // End if
+
+		return apply_filters( 'wp_trim_excerpt', $text, $post->post_content );
+
+	} // End if
+
+} // End cpb_custom_excerpt

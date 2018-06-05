@@ -65,6 +65,8 @@ class Functions_Ignite {
 
 		require_once __DIR__ . '/lib/theme-parts/feature-banner/class-feature-banner.php';
 
+		require_once __DIR__ . '/lib/theme-includes/include-ignite-banners.php';
+
 	} // End add_feature_banners
 
 
