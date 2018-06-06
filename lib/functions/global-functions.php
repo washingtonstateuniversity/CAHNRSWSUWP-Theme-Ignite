@@ -25,7 +25,7 @@
 * @param string $size Size of image to be used (full,large,medium,small, or custom)
 * @return array Array of image data
 */
-function ignite_get_post_image( $post_id, $size = 'full' ) {
+function ignite_get_post_image( $post_id, $size = 'full', $use_ancestors = false ) {
 
 	$image = array();
 
@@ -41,11 +41,28 @@ function ignite_get_post_image( $post_id, $size = 'full' ) {
 
 		$image['alt'] = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
 
-	} // End if
+	} elseif ( $use_ancestors ) {
+
+		$ancestors = get_post_ancestors( $post_id );
+
+		foreach ( $ancestors as $index => $ancestor_id ) {
+
+			$ancestor_image = ignite_get_post_image( $ancestor_id, $size );
+
+			if ( ! empty( $ancestor_image ) ) {
+
+				$image = $ancestor_image;
+
+				break;
+
+			} // End if
+		} // End foreach
+	}// End if
 
 	return $image;
 
 } // End ignite_get_post_image
+
 
 function ignite_get_post_image_array( $post_id ) {
 
@@ -528,3 +545,76 @@ function ignite_get_custom_excerpt( $post, $words = 35 ) {
 	} // End if
 
 } // End cpb_custom_excerpt
+
+
+/**
+ * Get banner image from customizer
+ * @since 2.1.1
+ * 
+ * @param array $default_settings
+ * @param string $base_key Customizer key
+ * 
+ * @return array Full settings
+ */
+function ignite_get_banner_settings_array( $default_settings, $base_key, $is_singular = false ) {
+
+	$settings = array();
+
+	foreach ( $default_settings as $key => $default_value ) {
+
+		$settings[ $key ] = get_theme_mod( $base_key . $key, $default_value );
+
+	} // End foreach
+
+	if ( $is_singular && ! empty( $settings['use_post_image'] ) ) {
+
+		global $post;
+
+		if ( ! empty( $post ) ) {
+
+			$inherit_image = ( ! empty( $settings['inherit_image'] ) ) ? $settings['inherit_image'] : false;
+
+			$post_image_array = ignite_get_post_image( $post->ID, 'full', $inherit_image );
+
+			if ( ! empty( $post_image_array['src'] ) ) {
+
+				$settings['img'] = $post_image_array['src'];
+
+			} // End if
+		} // End if
+	} // End if
+
+	return $settings;
+
+} // End ignite_get_banner_settings
+
+
+function ignite_get_banner_settings( $slug, $default_settings, $banner_args ) {
+
+	$settings = array();
+
+	if ( 'singular' === $banner_args['context'] && ! empty( $banner_args['post_type'] ) ) {
+
+		$base_key = 'ignite_theme_banner_' . $slug . '_' . $banner_args['post_type'] . '_';
+
+		$settings = ignite_get_banner_settings_array( $default_settings, $base_key, $banner_args['context'] );
+
+	} elseif ( 'taxonomy' === $banner_args['context'] ) {
+
+		$base_key = 'ignite_theme_banner_' . $slug . '_' . $banner_args['taxonomy'] . '_';
+
+		$settings = ignite_get_banner_settings_array( $default_settings, $base_key );
+
+	} elseif ( 'front_page' === $banner_args['context'] ) {
+
+		$base_key = 'ignite_theme_banner_' . $slug . '_front_page_';
+
+		$settings = ignite_get_banner_settings_array( $default_settings, $base_key );
+
+	}// End if
+
+	$settings = array_merge( $default_settings, $settings );
+
+	return $settings;
+
+} // End get_banner_settings
