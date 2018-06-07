@@ -36,11 +36,9 @@ class Ignite_Breadcrumbs {
 		foreach( $breadcrumb_array as $crumb ) {
 
 			$breadcrumb_html .= '<li><a href="' . $crumb['link'] . '">' . $crumb['title'] . '</a></li>';
-			//var_dump ($crumb);
 
 		}
 
-		
 		$breadcrumb_html .= '</ul>';
 
 		$content = $breadcrumb_html . $content; // Add breadcrumb_html to content
@@ -55,16 +53,11 @@ class Ignite_Breadcrumbs {
 
 		$breadcrumbs = array();
 
-		$post_id = \get_the_ID();//??
-		//var_dump($post_id);
+		$post_id = \get_the_ID();
 
-		// Get ancestor ids
 		$ancestors = get_post_ancestors( $post_id );
 		$ancestors = array_reverse($ancestors);
-	
-		//var_dump($ancestors);
 
-		// loop through ids
 		foreach ( $ancestors as $ancestor ) {
 			$title = get_the_title($ancestor);
 			$link = get_permalink($ancestor);
@@ -88,28 +81,9 @@ class Ignite_Breadcrumbs {
 
 		$breadcrumbs[] = $temp;
 
-	
-
-		// --- Get the title
-		// --- Get the link
-		// --- create associative array with title and link
-		// --- add array to $breadcrumbs hint $breadcrumbs[] = 
-		
-		// End loop
-
 		return $breadcrumbs;
 
 	}
 } // End Ignite_Breadcrumb
 
 $ignite_breadcrumbs = new Ignite_Breadcrumbs();
-
-
-// add_filter( 'the_content', array( $this, 'add_mediacontact' ), 11 ); display part
-
-//leads to method to add breadcrumbs add_socialbuttons( $content ) {
-
-
-	///new mthod to return title and url insite breadcrumb methoid get_parents_data (builds array)
-
-	//1.get content filter working - output fake breadcrumbs
