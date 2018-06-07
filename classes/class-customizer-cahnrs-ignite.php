@@ -1346,7 +1346,7 @@ class Customizer_CAHNRS_Ignite {
 					''       => 'Default',
 					'small'  => 'Small (14px)',
 					'medium' => 'Medium (16px)',
-					'large'  => 'Large (18px)', 
+					'large'  => 'Large (18px)',
 				),
 			)
 		); // end control
