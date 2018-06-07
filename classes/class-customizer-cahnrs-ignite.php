@@ -138,8 +138,6 @@ class Customizer_CAHNRS_Ignite {
 
 		$this->customize_secondary_nav( $wp_customize, $panel );
 
-		$this->customize_layout_options( $wp_customize, $panel );
-
 		$this->customize_sidebars( $wp_customize, $panel );
 
 		$this->customize_footer( $wp_customize, $panel );
@@ -2117,43 +2115,6 @@ class Customizer_CAHNRS_Ignite {
 				'choices'  => array(
 					'default'  => 'Not Set',
 					'college-global'  => 'College Global',
-				),
-			)
-		); // end control
-
-	} // end customize_theme
-
-
-	private function customize_layout_options( $wp_customize, $panel ) {
-
-		$wp_customize->add_setting(
-			'_cahnrswp_enable_spine_builder',
-			array(
-				'default'   => 'disable',
-				'transport' => 'refresh',
-			)
-		); // end add_setting
-
-		$section_id = '_cahnrswp_layout_options';
-
-		$wp_customize->add_section(
-			$section_id,
-			array(
-				'title' => 'Layout Settings',
-				'panel' => $panel,
-			)
-		); // end add_section
-
-		$wp_customize->add_control(
-			'_cahnrswp_enable_spine_builder_control',
-			array(
-				'label'    => 'Spine Layout Builder',
-				'section'  => $section_id,
-				'settings' => '_cahnrswp_enable_spine_builder',
-				'type'     => 'select',
-				'choices'  => array(
-					'enable'  => 'Enable',
-					'disable' => 'Disable',
 				),
 			)
 		); // end control
