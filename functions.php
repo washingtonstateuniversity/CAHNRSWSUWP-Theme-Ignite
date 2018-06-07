@@ -36,9 +36,9 @@ class Functions_Ignite {
 
 		require_once __DIR__ . '/classes/class-post-editor-cahnrs-ignite.php';
 
-		require_once __DIR__ . '/lib/theme-includes/include-ignite-breadcrumbs.php';
+		require_once __DIR__ . '/lib/includes/theme-parts/include-ignite-breadcrumbs.php';
 
-		require_once __DIR__ . '/lib/theme-includes/include-ignite-base-layout.php';
+		require_once __DIR__ . '/lib/includes/theme-parts/include-ignite-base-layout.php';
 
 		$this->add_feature_banners();
 
@@ -64,6 +64,8 @@ class Functions_Ignite {
 	protected function add_feature_banners() {
 
 		require_once __DIR__ . '/lib/theme-parts/feature-banner/class-feature-banner.php';
+
+		require_once __DIR__ . '/lib/includes/theme-parts/include-ignite-banners.php';
 
 	} // End add_feature_banners
 

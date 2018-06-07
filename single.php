@@ -2,9 +2,11 @@
 
 ignite_get_part( 'header', 'single' );
 
-require_once CAHNRSIGNITEPATH . 'theme-parts/page-banners/class-page-banner-cahnrs-ignite.php';
+do_action( 'ignite_theme_banner', 'single', array() );
+
+/*require_once CAHNRSIGNITEPATH . 'theme-parts/page-banners/class-page-banner-cahnrs-ignite.php';
 $page_banner = new Page_Banner_CAHNRS_Ignite();
-$page_banner->the_banner( 'single' );
+$page_banner->the_banner( 'single' );*/
 
 require_once CAHNRSIGNITEPATH . 'theme-parts/secondary-menu/class-secondary-menu-ignite.php';
 $secondary_menu = new Secondary_Menu_Ignite();

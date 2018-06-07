@@ -25,7 +25,7 @@
 * @param string $size Size of image to be used (full,large,medium,small, or custom)
 * @return array Array of image data
 */
-function ignite_get_post_image( $post_id, $size = 'full' ) {
+function ignite_get_post_image( $post_id, $size = 'full', $use_ancestors = false ) {
 
 	$image = array();
 
@@ -41,11 +41,28 @@ function ignite_get_post_image( $post_id, $size = 'full' ) {
 
 		$image['alt'] = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
 
-	} // End if
+	} elseif ( $use_ancestors ) {
+
+		$ancestors = get_post_ancestors( $post_id );
+
+		foreach ( $ancestors as $index => $ancestor_id ) {
+
+			$ancestor_image = ignite_get_post_image( $ancestor_id, $size );
+
+			if ( ! empty( $ancestor_image ) ) {
+
+				$image = $ancestor_image;
+
+				break;
+
+			} // End if
+		} // End foreach
+	}// End if
 
 	return $image;
 
 } // End ignite_get_post_image
+
 
 function ignite_get_post_image_array( $post_id ) {
 
@@ -411,3 +428,193 @@ function ignite_get_template_main( $is_start = true ) {
 	return apply_filters( 'cahnrs_ignite_part_html', $html, 'template-main', array() );
 
 } // End ignite_get_template_main
+
+
+/**
+ * Register banner for use in ignite pages
+ * @since 2.1.1
+ *
+ * @param string $slug Banner slug
+ * @param array $banner_args Settings for the banner
+ */
+function ignite_register_banner( $slug, $banner_args ) {
+
+	global $ignite_wp_banners;
+
+	$default_args = array(
+		'label'               => '',
+		'render_callback'     => false,
+		'customizer_callback' => false,
+		'default_args'        => array(),
+	);
+
+	$banner_args = array_merge( $default_args, $banner_args );
+
+	$ignite_wp_banners[ $slug ] = $banner_args;
+
+} // End ignite_register_banner
+
+
+/**
+ * Get registred theme banners
+ * @since 2.1.1
+ *
+ * @return array Array of banners
+ */
+function ignite_get_registered_banners( $as_select = false ) {
+
+	global $ignite_wp_banners;
+
+	if ( $as_select ) {
+
+		$select = array();
+
+		foreach ( $ignite_wp_banners as $slug => $banner ) {
+
+			$select[ $slug ] = $banner['label'];
+
+		} // End foreach
+
+		return $select;
+
+	} else {
+
+		return $ignite_wp_banners;
+
+	}// End if
+
+} 
+
+/**
+ * Get panel slug used for ignite customizer
+ * @since 2.1.1
+ *
+ * @return string Panel slug
+ */
+function ignite_get_customizer_panel_slug() {
+
+	return 'cahnrs_spine_child';
+
+} // End ignite_get_customizer_panel_slug
+
+/**
+* @desc Build custom excerpt from WP_Post object
+* @since 3.0.4
+*
+* @param WP_Post $post WP_Post object
+* @param int $words Count of words to return
+*
+* @return string Excerpt
+*/
+function ignite_get_custom_excerpt( $post, $words = 35 ) {
+
+	if ( ! empty( $post->post_excerpt ) ) {
+
+		return $post->post_excerpt;
+
+	} else {
+
+		$text = strip_shortcodes( $post->post_content );
+
+		$text = str_replace( ']]>', ']]&gt;', $text );
+
+		$text = wp_strip_all_tags( $text );
+
+		$excerpt_length = apply_filters( 'excerpt_length', $words );
+
+		$excerpt_more = apply_filters( 'excerpt_more', ' [...]' );
+
+		$words = preg_split( "/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY );
+
+		if ( count( $words ) > $excerpt_length ) {
+
+			array_pop( $words );
+
+			$text = implode( ' ', $words );
+
+			$text = $text . $excerpt_more;
+
+		} else {
+
+			$text = implode( ' ', $words );
+
+		} // End if
+
+		return apply_filters( 'wp_trim_excerpt', $text, $post->post_content );
+
+	} // End if
+
+} // End cpb_custom_excerpt
+
+
+/**
+ * Get banner image from customizer
+ * @since 2.1.1
+ * 
+ * @param array $default_settings
+ * @param string $base_key Customizer key
+ * 
+ * @return array Full settings
+ */
+function ignite_get_banner_settings_array( $default_settings, $base_key, $is_singular = false ) {
+
+	$settings = array();
+
+	foreach ( $default_settings as $key => $default_value ) {
+
+		$settings[ $key ] = get_theme_mod( $base_key . $key, $default_value );
+
+	} // End foreach
+
+	if ( $is_singular && ! empty( $settings['use_post_image'] ) ) {
+
+		global $post;
+
+		if ( ! empty( $post ) ) {
+
+			$inherit_image = ( ! empty( $settings['inherit_image'] ) ) ? $settings['inherit_image'] : false;
+
+			$post_image_array = ignite_get_post_image( $post->ID, 'full', $inherit_image );
+
+			if ( ! empty( $post_image_array['src'] ) ) {
+
+				$settings['img'] = $post_image_array['src'];
+
+			} // End if
+		} // End if
+	} // End if
+
+	return $settings;
+
+} // End ignite_get_banner_settings
+
+
+function ignite_get_banner_settings( $slug, $default_settings, $banner_args ) {
+
+	$settings = array();
+
+	if ( 'singular' === $banner_args['context'] && ! empty( $banner_args['post_type'] ) ) {
+
+		$base_key = 'ignite_theme_banner_' . $slug . '_' . $banner_args['post_type'] . '_';
+
+		$settings = ignite_get_banner_settings_array( $default_settings, $base_key, $banner_args['context'] );
+
+	} elseif ( 'taxonomy' === $banner_args['context'] ) {
+
+		$base_key = 'ignite_theme_banner_' . $slug . '_' . $banner_args['taxonomy'] . '_';
+
+		$settings = ignite_get_banner_settings_array( $default_settings, $base_key );
+
+	} elseif ( 'front_page' === $banner_args['context'] ) {
+
+		$base_key = 'ignite_theme_banner_' . $slug . '_front_page_';
+
+		$settings = ignite_get_banner_settings_array( $default_settings, $base_key );
+
+	}// End if
+
+	$settings = array_merge( $default_settings, $settings );
+
+	return $settings;
+
+} // End get_banner_settings
