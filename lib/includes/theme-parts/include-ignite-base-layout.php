@@ -2,17 +2,165 @@
 
 class Ignite_Base_Layout {
 
+	protected $layouts = array(
+		'single'      => 'Single Column',
+		'column-left' => 'Column Left',
+	);
+
 	public function __construct() {
 
-		add_filter( 'ignite_post_content_single_html', array( $this, 'get_base_layout' ), 10, 3 );
+		add_action( 'init', array( $this, 'init_layouts' ) );
 
-		add_action( 'ignite-layout-column-sidebar-before', array( $this, 'get_column_navigation' ), 10, 1 );
-
-		add_action( 'add_meta_boxes', array( $this, 'add_menu_meta_box' ), 10, 2 );
-
-		add_action( 'save_post', array( $this, 'save_menu_metabox' ) );
+		add_action( 'customize_register', array( $this, 'add_customizer_settings' ) );
 
 	} // end __construct
+
+
+	/**
+	 * Init layout functionality if set in customizer
+	 */
+	public function init_layouts() {
+
+		$use_layouts = get_theme_mod( 'ignite_use_layouts', false );
+
+		if ( $use_layouts ) {
+
+			add_filter( 'ignite_post_content_single_html', array( $this, 'get_base_layout' ), 10, 3 );
+
+			add_action( 'ignite-layout-column-sidebar-before', array( $this, 'get_column_navigation' ), 10, 1 );
+
+			add_action( 'add_meta_boxes', array( $this, 'add_menu_meta_box' ), 10, 2 );
+
+			add_action( 'save_post', array( $this, 'save_menu_metabox' ) );
+
+		} // End if
+
+	} // End init_layouts
+
+
+	/**
+	 * Add Customizer section, settings, & controls
+	 * @since 2.1.1
+	 *
+	 * @param WP_Customize
+	 */
+	public function add_customizer_settings( $wp_customize ) {
+
+		$panel = ignite_get_customizer_panel_slug();
+
+		$section_id = 'ignite_layout_settings';
+
+		$post_types = array(
+			'front_page' => 'Front Page',
+			'post' => 'Post',
+			'page' => 'Page',
+		);
+
+		$wp_customize->add_section(
+			$section_id,
+			array(
+				'title' => 'Layout Settings',
+				'panel' => $panel,
+			)
+		); // end add_section
+
+		$wp_customize->add_setting(
+			'_cahnrswp_enable_spine_builder',
+			array(
+				'default'   => 'disable',
+				'transport' => 'refresh',
+			)
+		); // end add_setting
+
+		$wp_customize->add_setting(
+			'ignite_use_layouts',
+			array(
+				'default'   => false,
+				'transport' => 'refresh',
+			)
+		); // end add_setting
+
+		$wp_customize->add_control(
+			'_cahnrswp_enable_spine_builder_control',
+			array(
+				'label'    => 'Spine Layout Builder',
+				'section'  => $section_id,
+				'settings' => '_cahnrswp_enable_spine_builder',
+				'type'     => 'select',
+				'choices'  => array(
+					'enable'  => 'Enable',
+					'disable' => 'Disable',
+				),
+			)
+		); // end control
+
+		$wp_customize->add_control(
+			'ignite_use_layouts_control',
+			array(
+				'label'    => 'Use Theme Layouts',
+				'section'  => $section_id,
+				'settings' => 'ignite_use_layouts',
+				'type'     => 'checkbox',
+			)
+		); // end control
+
+		$wp_customize->add_setting(
+			'ignite_theme_layout_default',
+			array(
+				'default'   => 'single',
+				'transport' => 'refresh',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Control(
+				$wp_customize,
+				'ignite_theme_layout_default_control',
+				array(
+					'label'      => 'Default Layout',
+					'settings'   => 'ignite_theme_layout_default',
+					'section'    => $section_id,
+					'type'       => 'select',
+					'choices'    => $this->layouts,
+					'active_callback' => function() use ( $wp_customize ) {
+						$use_layouts = $wp_customize->get_setting( 'ignite_use_layouts' )->value();
+						return ( $use_layouts ) ? true : false;
+					},
+				)
+			)
+		);
+
+		foreach ( $post_types as $slug => $label ) {
+
+			$wp_customize->add_setting(
+				'ignite_theme_layout_' . $slug,
+				array(
+					'default'   => 'single',
+					'transport' => 'refresh',
+				)
+			);
+
+			$wp_customize->add_control(
+				new WP_Customize_Control(
+					$wp_customize,
+					'ignite_theme_layout_' . $slug . '_control',
+					array(
+						'label'      => $label . ' Layout',
+						'settings'   => 'ignite_theme_layout_' . $slug,
+						'section'    => $section_id,
+						'type'       => 'select',
+						'choices'    => $this->layouts,
+						'active_callback' => function() use ( $wp_customize ) {
+							$use_layouts = $wp_customize->get_setting( 'ignite_use_layouts' )->value();
+							return ( $use_layouts ) ? true : false;
+						},
+					)
+				)
+			);
+
+		} // End foreach
+
+	} // End add_customizer_settings
 
 
 	/**
@@ -27,7 +175,32 @@ class Ignite_Base_Layout {
 	 */
 	public function get_base_layout( $html, $context, $args ) {
 
-		$layout = 'column-left';
+		$layout = get_theme_mod( 'ignite_theme_layout_default', 'single' );
+
+		if ( is_front_page() ) {
+
+			$fp_layout = get_theme_mod( 'ignite_theme_layout_front_page', false );
+
+			if ( ! empty( $fp_layout ) ) {
+
+				$layout = $fp_layout;
+
+			} // End if
+		} elseif ( is_singular() ) {
+
+			$post_type = get_post_type();
+
+			if ( $post_type ) {
+
+				$pt_layout = get_theme_mod( 'ignite_theme_layout_' . $post_type, false );
+
+				if ( ! empty( $pt_layout ) ) {
+
+					$layout = $pt_layout;
+
+				} // End if
+			} // End if
+		} // End if
 
 		switch ( $layout ) {
 
@@ -347,6 +520,6 @@ class Ignite_Base_Layout {
 
 	} // End save_menu_metabox
 
-}
+} // End Ignite_Base_Layout
 
 $ignite_base_layout = new Ignite_Base_Layout();
