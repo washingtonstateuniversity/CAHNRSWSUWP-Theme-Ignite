@@ -4,14 +4,42 @@ class Ignite_Breadcrumbs {
 
 	public function __construct() {
 
-		$this->add_filters();
+		add_action( 'init', array( $this, 'add_filters' ) );
+
+		add_action( 'customize_register', array( $this, 'add_breadcrumb_checkbox' ) );
 
 	} // End __construct
 
+	public function add_breadcrumb_checkbox( $wp_customize ) {
 
-	protected function add_filters() {
+		$wp_customize->add_setting( 'ignite_breadcrumb' , array(
+			'default'   => false,
+			'transport' => 'refresh',
+		) );
 
-		add_filter( 'ignite_post_content_single_html', array( $this, 'add_breadcrumb' ), 1 ); //why 11 again?
+		$wp_customize->add_control(
+			'ignite_breadcrumb_control', 
+			array(
+				'label'    => 'Show Breadcrumbs',
+				'section'  => '_cahnrswp_layout_options',
+				'settings' => 'ignite_breadcrumb',
+				'type'     => 'checkbox',
+			)
+		);
+
+
+	}
+
+
+	public function add_filters() {
+
+		$use_breadcrumbs = get_theme_mod( 'ignite_breadcrumb', false );
+
+		if( $use_breadcrumbs){
+
+			add_filter( 'ignite_post_content_single_html', array( $this, 'add_breadcrumb' ), 1 );
+
+		}
 
 	} // End add_filters
 	
