@@ -2146,7 +2146,7 @@ figure {
 	top: 0;
 	right: 0;
 	background-color: #981e32;
-	background-image: url(../images/search-icon-light.png);
+	background-image: url(/images/search-icon-light.png);
 	background-repeat:  no-repeat;
 	background-size: auto 80%;
 	background-position: center;
@@ -2634,14 +2634,14 @@ body .widget_cahnrs_action_item a {
 	width: 40px;
 	top: 0;
 	bottom: 0;
-	background-image: url(../images/plus-icon-basic.png);
+	background-image: url(/wp-content/themes/cahnrswsuwp-theme-ignite/images/plus-icon-basic.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 30px;
 }
 
 .ignite-content-accordion .ignite-content-accordion-title.active:after {
-	background-image: url(../images/minus-icon-basic.png);
+	background-image: url(/wp-content/themes/cahnrswsuwp-theme-ignite/images/minus-icon-basic.png);
 }
 
 .ignite-content-accordion .ignite-content-accordion-content {
@@ -2671,14 +2671,14 @@ body .widget_cahnrs_action_item a {
 	width: 40px;
 	top: 0;
 	bottom: 0;
-	background-image: url(../images/plus-icon-basic.png);
+	background-image: url(/wp-content/themes/cahnrswsuwp-theme-ignite/images/plus-icon-basic.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 30px;
 }
 
 .ignite-accordion .ignite-accordion-title.active:after {
-	background-image: url(../images/minus-icon-basic.png);
+	background-image: url(/wp-content/themes/cahnrswsuwp-theme-ignite/images/minus-icon-basic.png);
 }
 
 .ignite-accordion .ignite-accordion-content {
