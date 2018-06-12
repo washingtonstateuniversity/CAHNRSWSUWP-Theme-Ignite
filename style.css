@@ -19,6 +19,7 @@ Banners
 - Banner Slideshow
 - Video Banner
 - Play Video Banner
+Breadcrumbs
 Colors
 - Full Bleeds
 Content
@@ -906,6 +907,35 @@ figure {
 	background-image: url(discover-cahnrs.png);
 	background-size: contain;
 	font-size: 0;
+}
+
+/* Breadcrumb
+--------------------------------------------------------------- */
+ul.breadcrumbs {
+    padding: 0!important;
+		font-size: .7em;
+		line-height:.5em;
+}
+.breadcrumbs li{
+	display:inline;
+	padding:0px 3px 0 0;
+}
+.breadcrumbs a:after {
+	font-family: FontAwesome;
+	content: ' \f101';
+		/* f0da, f105, f138 f101 */
+}
+.breadcrumbs li:last-child a {
+	color:#464e54;
+}
+.breadcrumbs li:last-child a:after {
+	content: none;
+}
+.breadcrumbs a:hover {
+	text-decoration:none;
+}
+.breadcrumbs a:hover:after {
+	color:  #891e32;
 }
 
 /* Content
