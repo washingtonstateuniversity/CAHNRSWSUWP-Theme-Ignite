@@ -232,7 +232,7 @@ class Ignite_Banners {
 
 			$banner_args['post_type'] = $post_type;
 
-			$banner_args['classes'][] = $post_type;
+			$banner_args['context'] = 'front-page';
 
 			$banner_args['classes'][] = 'is-front-page';
 

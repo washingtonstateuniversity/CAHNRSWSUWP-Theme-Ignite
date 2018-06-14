@@ -180,8 +180,15 @@ class Ignite_Title_Banner {
 
 			$settings = $this->get_singular_settings( $args );
 
-		} else {
+		} elseif ( 'front-page' === $args['context'] ) {
 
+			$base_key = 'ignite_theme_banner_' . $this->slug . '_front_page';
+
+			if ( ! empty( $args['post_type'] ) ) {
+
+				$settings = $this->get_singular_settings( $args, $base_key );
+
+			} // End if
 		} // End if
 
 		$settings = array_merge( $this->default_args, $settings );
@@ -191,7 +198,7 @@ class Ignite_Title_Banner {
 	} // End get_banner_settings
 
 
-	protected function get_singular_settings( $args ) {
+	protected function get_singular_settings( $args, $base_key = false ) {
 
 		$settings = array();
 
@@ -199,7 +206,15 @@ class Ignite_Title_Banner {
 
 		if ( ! empty( $post ) ) {
 
-			$base_key = 'ignite_theme_banner_' . $this->slug . '_' . $post->post_type . '_';
+			if ( empty( $base_key ) ) {
+
+				$base_key = 'ignite_theme_banner_' . $this->slug . '_' . $post->post_type . '_';
+
+			} else {
+
+				$base_key .= '_';
+
+			} // End if
 
 			foreach ( $this->default_args as $key => $default_value ) {
 
