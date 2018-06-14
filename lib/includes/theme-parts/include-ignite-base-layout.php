@@ -188,17 +188,31 @@ class Ignite_Base_Layout {
 			} // End if
 		} elseif ( is_singular() ) {
 
-			$post_type = get_post_type();
+			$pt_layout = 'default';
 
-			if ( $post_type ) {
+			$post_id = get_the_ID();
 
-				$pt_layout = get_theme_mod( 'ignite_theme_layout_' . $post_type, false );
+			if ( ! empty( $post_id ) ) {
 
-				if ( ! empty( $pt_layout ) ) {
+				$pt_layout = get_post_meta( $post_id, '_ignite_page_layout', true );
 
-					$layout = $pt_layout;
+			} // End if
+
+			if ( empty( $pt_layout ) || 'default' === $pt_layout ) {
+
+				$post_type = get_post_type();
+
+				if ( $post_type ) {
+
+					$pt_layout = get_theme_mod( 'ignite_theme_layout_' . $post_type, false );
 
 				} // End if
+			} // End if
+
+			if ( ! empty( $pt_layout ) && 'default' !== $pt_layout ) {
+
+				$layout = $pt_layout;
+
 			} // End if
 		} // End if
 
@@ -446,18 +460,19 @@ class Ignite_Base_Layout {
 			}// End if
 		} // End foreach
 
-		$menu_options = '<option value="default" ' . selected( 'default', $args['_ignite_post_menu'], false ) . '>Inherit from Parent</option>';
-
 		$menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
 
-		if ( ! empty( $menus ) && is_array( $menus ) ) {
+		if ( empty( $menus ) || ! is_array( $menus ) ) {
 
-			foreach ( $menus as $menu ) {
+			$menus = array();
 
-				$menu_options .= '<option value="' . esc_html( $menu->term_id ) . '" ' . selected( $menu->term_id, $args['_ignite_post_menu'], false ) . '>' . esc_html( $menu->name ) . '</option>';
-
-			} // End foreach
 		} // End if
+
+		$selected_menu = $args['_ignite_post_menu'];
+
+		$selected_layout = $args['_ignite_page_layout'];
+
+		$layouts = $this->layouts;
 
 		include ignite_get_theme_path( 'lib/displays/forms/layout-options/layout-options-editor.php' );
 
