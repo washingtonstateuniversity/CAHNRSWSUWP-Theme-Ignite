@@ -1,6 +1,6 @@
 <div class="cahnrs-events-shortcode basic-display">
 	<?php foreach ( $events as $event ) : ?><div class="cahnrs-event">
-		<div class="cahnrs-event-link"><a href="<?php echo esc_url( tribe_get_event_link( $event->ID ) ); ?>" rel="bookmark">View Event Details</a></div>
+		<div class="cahnrs-event-link"><a href="<?php echo esc_url( tribe_get_event_link( $event->ID ) ); ?>" rel="bookmark"><?php echo esc_html( get_the_title( $event->ID ) ); ?></a></div>
 		<div class="cahnrs-event-calendar-details">
 			<span class="cahnrs-day"><?php echo esc_html( tribe_get_start_date( $event->ID, false, 'j' ) ); ?></span>
 			<span class="cahnrs-month"><?php echo esc_html( tribe_get_start_date( $event->ID, false, 'M' ) ); ?></span>
