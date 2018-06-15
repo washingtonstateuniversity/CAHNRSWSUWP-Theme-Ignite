@@ -19,13 +19,13 @@ Banners
 - Banner Slideshow
 - Video Banner
 - Play Video Banner
+- Title Banner
 Breadcrumbs
 Colors
 - Full Bleeds
 Content
 - Promo List
 Displays
-
 Footers
 - College Global Footer
 Headers
@@ -35,6 +35,7 @@ Headers
 - College Header Horizontal Menu
 - Search
 Layouts
+Menus
 News Articles
 Pagebuilder Overrides
 Pagination
@@ -907,6 +908,76 @@ figure {
 	background-image: url(discover-cahnrs.png);
 	background-size: contain;
 	font-size: 0;
+}
+
+/* Banners: Title Banner --- */
+#ignite-feature-banner.ignite-title-banner .ignite-banner-background,
+#ignite-feature-banner.ignite-title-banner .ignite-banner-content {
+	position: relative;
+}
+
+#ignite-feature-banner.ignite-title-banner .ignite-banner-background {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	background-color: #2a3033;
+	background-size: cover;
+	background-position: center center;
+}
+
+#ignite-feature-banner.ignite-title-banner .ignite-banner-background:before,
+#ignite-feature-banner.ignite-title-banner .ignite-banner-background:after {
+	content: '';
+	display: block;
+	position: absolute;
+	height: 10px;
+	width: 100%;
+	left: 0;
+}
+
+#ignite-feature-banner.ignite-title-banner .ignite-banner-background:before {
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+}
+
+#ignite-feature-banner.ignite-title-banner .ignite-banner-background:after {
+	bottom: 0;
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+}
+
+#ignite-feature-banner.ignite-title-banner .ignite-banner-content {
+	display: table;
+	width: 100%;
+}
+#ignite-feature-banner.ignite-title-banner .ignite-banner-content-inner {
+	display: table-row;
+}
+#ignite-feature-banner.ignite-title-banner .ignite-banner-content-text {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	padding: 50px 30px;
+	box-sizing: border-box;
+}
+#ignite-feature-banner.ignite-title-banner .ignite-banner-title {
+	display: block;
+	font-size: 40px;
+	color: #fff;
+	margin: 0 auto 20px;
+	text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.69);
+}
+#ignite-feature-banner.ignite-title-banner .ignite-banner-caption {
+	display: block;
+	font-size: 20px;
+	color: #fff;
+	margin: 0 auto;
+	text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.69);
 }
 
 /* Breadcrumb
@@ -2401,9 +2472,18 @@ ul.breadcrumbs {
 --------------------------------------------------------------- */
 
 /* Layouts: Column Left */
+#ignite-layout-wrapper:after {
+	content:'';
+	display: block;
+	clear: both;
+}
 .ignite-layout-column.column-left.lc-column-one {
 	float: left;
 	width: 250px;
+	background-color: #fff;
+	z-index: 10;
+	position: relative;
+	border-radius: 0 0 8px 8px;
 }
 
 .ignite-layout-column.column-left.lc-column-two {
@@ -2411,7 +2491,83 @@ ul.breadcrumbs {
 	padding-left: 2rem;
 	box-sizing: border-box;
 }
+.ignite-layout-column .ignite-sidebar-content {
+	padding: 0 24px 24px 24px;
+	box-sizing: border-box;
+}
 
+/* Menus
+--------------------------------------------------------------- */
+
+/* Menus: Column Menu */
+.ignite-column-menu {
+	padding: 8px 8px 18px;
+	box-sizing: border-box;
+	background-color: #fff;
+	position: relative;
+	z-index: 2;
+}
+
+.ignite-column-menu .menu {
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ignite-column-menu .menu a:hover {
+	/*font-weight: bold;*/
+}
+
+.ignite-column-menu .menu li {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+.ignite-column-menu .menu > li {
+	border-bottom: 1px solid #ccc;
+}
+
+.ignite-column-menu .menu > li > a {
+	display: block;
+	margin: 0;
+	padding: 6px 12px;
+	font-size: 14px;
+	letter-spacing: 1px;
+	text-decoration: none;
+}
+
+.ignite-column-menu .menu > li > a:hover {
+	background-color: rgba( 42,48,51,0.1);
+}
+
+.ignite-column-menu .menu > li > ul {
+	display: none;
+}
+
+.ignite-column-menu .menu > li.current-menu-item > ul {
+	display: block;
+}
+
+.ignite-column-menu .menu > li > ul {
+	/*background-color: rgba( 239,240,5241);*/
+	padding-bottom: 12px;
+}
+
+.ignite-column-menu .menu > li > ul a {
+	display: block;
+	margin: 0;
+	padding: 6px 12px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-decoration: none;
+}
+.ignite-column-menu .menu > li > ul a:before {
+	content: '\f0da';
+	font-family: fontAwesome;
+	display: inline-block;
+	padding-right: 4px;
+}
 
 /* News Articles
 --------------------------------------------------------------- */

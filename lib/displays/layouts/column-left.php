@@ -1,6 +1,6 @@
 <div class="ignite-layout-column column-left lc-column-one">
 	<?php do_action( 'ignite-layout-column-sidebar-before', $layout ); ?>
-	<?php if ( is_active_sidebar( 'ignite-layout-column-sidebar' ) ) : ?><?php dynamic_sidebar( 'ignite-layout-column-sidebar' ); ?><?php endif; ?>
+	<div class="ignite-sidebar-content"><?php if ( is_active_sidebar( 'sidebar' ) ) : ?><?php dynamic_sidebar( 'sidebar' ); ?><?php endif; ?></div>
 	<?php do_action( 'ignite-layout-column-sidebar-after', $layout ); ?>
 </div>
 <div class="ignite-layout-column column-left lc-column-two">

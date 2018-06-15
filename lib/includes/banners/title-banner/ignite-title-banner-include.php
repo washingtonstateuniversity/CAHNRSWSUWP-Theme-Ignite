@@ -18,6 +18,7 @@ class Ignite_Title_Banner {
 		'inherit_caption'  => '',
 		'color'            => '',
 		'height'           => '350px',
+		'width'            => '',
 	);
 
 
@@ -54,6 +55,16 @@ class Ignite_Title_Banner {
 		$caption = ( ! empty( $settings['caption'] ) ) ? $settings['caption'] : '';
 
 		$height = ( ! empty( $settings['height'] ) ) ? $settings['height'] : '300px';
+
+		$style = array();
+
+		if ( ! empty( $settings['width'] ) ) {
+
+			$style[] = 'max-width:' . $settings['width'];
+
+		} // End if
+
+		$style = implode( ';', $style );
 
 		if ( empty( $settings['require_image'] ) ) {
 
@@ -105,6 +116,19 @@ class Ignite_Title_Banner {
 				'label'      => $post_type_label . ': Banner Height (Include Units)',
 				'section'    => $section_id,
 				'settings'   => $base_setting . 'height',
+				'active_callback' => function() use ( $wp_customize, $type_setting ) {
+					$selected_banner = $wp_customize->get_setting( $type_setting )->value();
+					return ( 'title_banner' === $selected_banner ) ? true : false;
+				},
+			)
+		);
+
+		$wp_customize->add_control(
+			$base_setting . 'width_control',
+			array(
+				'label'      => $post_type_label . ': Banner Max Width',
+				'section'    => $section_id,
+				'settings'   => $base_setting . 'width',
 				'active_callback' => function() use ( $wp_customize, $type_setting ) {
 					$selected_banner = $wp_customize->get_setting( $type_setting )->value();
 					return ( 'title_banner' === $selected_banner ) ? true : false;
