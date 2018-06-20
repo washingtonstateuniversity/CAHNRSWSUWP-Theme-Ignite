@@ -605,7 +605,7 @@ function ignite_get_banner_settings( $slug, $default_settings, $banner_args ) {
 
 		$settings = ignite_get_banner_settings_array( $default_settings, $base_key );
 
-	} elseif ( 'front_page' === $banner_args['context'] ) {
+	} elseif ( 'front-page' === $banner_args['context'] ) {
 
 		$base_key = 'ignite_theme_banner_' . $slug . '_front_page_';
 

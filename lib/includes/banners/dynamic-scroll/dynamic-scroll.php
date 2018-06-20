@@ -1,5 +1,5 @@
-<div id="site-banner" class="static-image-wide-banner parallax-banner<?php if ( ! empty( $classes ) ) : ?> <?php echo esc_html( implode( ' ', $classes ) ); ?><?php endif; ?>">
-	<div class="banner-image-wrap" style="background-image:url(<?php echo esc_url( $img ) ?>);">
+<div id="site-banner" style="height:<?php echo esc_attr( $height ); ?>" class="static-image-wide-banner parallax-banner<?php if ( ! empty( $classes ) ) : ?> <?php echo esc_html( implode( ' ', $classes ) ); ?><?php endif; ?>">
+	<div class="banner-image-wrap" style="background-image:url(<?php echo esc_url( $img ) ?>);height:<?php echo esc_attr( $height ); ?>">
 		<div class="banner-image" style="background-image:url(<?php echo esc_url( $img ) ?>);">
 		</div>
 	</div>

@@ -59,7 +59,7 @@ class Ignite_Base_Layout {
 		$taxonomy_archive_tags = array(
 			'category_archive' => 'Category: Archive',
 			'post_tag_archive' => 'Tag: Archive',
-		)
+		);
 
 		$wp_customize->add_section(
 			$section_id,
