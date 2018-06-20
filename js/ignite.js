@@ -159,10 +159,104 @@ var cahnrs_ignite = function() {
 	var self = this;
 	
 	this.init = function() {
+
+		this.bind_events();
 	}; // End init
+
+	this.bind_events = function() {
+
+		jQuery( window ).on(
+			'resize',
+			function() {
+				self.set_break_points();
+				self.equalize_height();
+			}
+		)
+
+		jQuery( document ).ready( function() { self.equalize_height(); } );
+		jQuery( window ).load( function() { self.equalize_height(); } );
+
+		jQuery('body').on(
+			'click',
+			'.ignite-is-mobile .ignite-make-mobile-accordion .ignite-accordion-title',
+			function( event ) {
+				event.preventDefault();
+				self.do_accordion( jQuery( this ) );
+			}
+		)
+
+		jQuery('body').on(
+			'click',
+			'.ignite-make-accordion .ignite-accordion-title',
+			function( event ) {
+				event.preventDefault();
+				self.do_accordion( jQuery( this ) );
+			}
+		)
+
+	} // End bind_events
 	
 	this.spotlight_slideshow = function( wrapper ) {
 	} // End spotlight_slideshow
+
+	this.equalize_height = function() {
+
+		jQuery('.ignite-equalize-height').each( 
+			function() {
+				var to = jQuery( this ).find('.ignite-equalize-height-to');
+				var from = jQuery( this ).find('.ignite-equalize-height-from');
+				var h = to.height();
+				from.height( h + 'px' );
+			}
+		)
+
+	} // End equalize_height
+
+	this.set_break_points = function() {
+
+		var w = jQuery( 'html' ).width();
+
+		var mobile_class = '';
+
+		if ( w > 998 ) {
+
+			mobile_class = 'ignite-mobile-large ignite-is-desktop';
+
+		} else if ( 998 >= w && w > 750 ) {
+
+			mobile_class = 'ignite-mobile-medium ignite-is-mobile';
+
+		} else if ( 750 >= w && w > 600) {
+
+			mobile_class = 'ignite-mobile-medium-small ignite-is-mobile ignite-is-small-mobile';
+
+		} else {
+
+			mobile_class = 'ignite-mobile-small ignite-is-mobile ignite-is-small-mobile';
+
+		} // End if
+
+		jQuery( '.add-mobile-break').removeClass('ignite-is-desktop ignite-is-mobile ignite-is-small-mobile ignite-mobile-large ignite-mobile-medium ignite-mobile-medium-small gnite-mobile-medium-small ignite-mobile-small').addClass( mobile_class );
+
+	} // End set_break_points
+
+	this.do_accordion = function( item ) {
+
+		var parent = item.closest('.ignite-make-mobile-accordion,.ignite-make-accordion');
+
+		if ( parent.length ){
+
+			var content = parent.find( '.ignite-accordion-content' );
+
+		} else {
+
+			var content = item.next( '.ignite-accordion-content' );
+
+		} // End if
+
+		content.slideToggle('fast');
+
+	} // End do_mobile_accordion
 	
 	this.init();
 	
@@ -423,7 +517,6 @@ jQuery( 'body' ).find( '.ignite-slideshow' ).each(
 );
 
 var instance_cahnrs_ignite = new cahnrs_ignite();
-
 
 
 var ignite = {

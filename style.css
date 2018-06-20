@@ -25,6 +25,7 @@ Colors
 - Full Bleeds
 Content
 - Promo List
+CSS Hooks
 Displays
 Footers
 - College Global Footer
@@ -36,6 +37,7 @@ Headers
 - Search
 Layouts
 Menus
+Mobile Accordions
 News Articles
 Pagebuilder Overrides
 Pagination
@@ -1038,6 +1040,18 @@ ul.breadcrumbs {
 
 /* Colors
 --------------------------------------------------------------- */
+/* CSS Hooks
+--------------------------------------------------------------- */
+@media screen and (max-width: 989px) {
+	.ignite-hide-mobile {
+		display: none !important;
+	}
+}
+@media screen and (min-width: 989px) {
+	.ignite-hide-desktop {
+		display: none !important;
+	}
+}
 
 /* Full Bleeds ---------- */
 .crimson-back.full-bleed:before, .crimson-back.full-bleed:after {
@@ -2496,6 +2510,17 @@ ul.breadcrumbs {
 	box-sizing: border-box;
 }
 
+.ignite-layout-column.column-left.lc-column-one.ignite-is-mobile {
+	float: none;
+	width: auto;
+}
+
+.ignite-layout-column.column-left.lc-column-two.ignite-is-mobile {
+	margin-left: 0;
+	padding-left: 0;
+	box-sizing: border-box;
+}
+
 /* Menus
 --------------------------------------------------------------- */
 
@@ -2567,6 +2592,77 @@ ul.breadcrumbs {
 	font-family: fontAwesome;
 	display: inline-block;
 	padding-right: 4px;
+	vertical-align: top;
+}
+
+.ignite-make-accordion.ignite-column-menu .menu,
+.ignite-is-mobile .ignite-column-menu .menu {
+	display: none;
+}
+
+.ignite-make-accordion.ignite-column-menu .menu > li,
+.ignite-is-mobile .ignite-column-menu .menu > li {
+	display: block;
+	vertical-align: top;
+	width: auto;
+	margin-left: 0;
+}
+.ignite-make-accordion.ignite-column-menu .menu-title,
+.ignite-is-mobile .ignite-column-menu .menu-title {
+	background: #981e32;
+	display: block;
+	color: #fff;
+	padding: 12px 18px;
+	position: relative;
+	cursor: pointer;
+}
+.ignite-make-accordion.ignite-column-menu .menu-title:after,
+.ignite-is-mobile .ignite-column-menu .menu-title:after {
+	display: block;
+	content: '\f0c9';
+	position: absolute;
+	z-index: 200;
+	width: 50px;
+	height: 100%;
+	right: 0;
+	top: 0;
+	color: #fff;
+	font-family: fontAwesome;
+	padding: 12px 0;
+	box-sizing: border-box;
+	text-align: center;
+	border-left: 1px solid #b55160;
+}
+
+/* Mobile Accordions
+--------------------------------------------------------------- */
+
+.ignite-is-desktop .ignite-make-mobile-accordion .ignite-accordion-content {
+	display: block !important;
+}
+
+.ignite-is-mobile .ignite-accordion-title {
+	cursor: pointer;
+	position: relative;
+	padding-right: 40px;
+	box-sizing: border-box;
+}
+.ignite-is-mobile .ignite-accordion-title:after {
+	content: '\f0d7';
+	display: block;
+	width: 40px;
+	height: 100%;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: center;
+	font-family: fontAwesome;
+	border-left: 1px solid #777;
+}
+
+.ignite-is-mobile .ignite-accordion-content {
+	display: none;
 }
 
 /* News Articles

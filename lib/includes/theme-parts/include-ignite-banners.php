@@ -37,6 +37,8 @@ class Ignite_Banners {
 
 						call_user_func_array( $banner['render_callback'], array( $context, $banner_args ) );
 
+						include ignite_get_theme_path( 'lib/displays/widget-areas/banner-after.php' );
+
 					} // End if
 				} // End if
 			} // End if

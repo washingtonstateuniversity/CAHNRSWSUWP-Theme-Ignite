@@ -35,21 +35,21 @@ class Ignite_Breadcrumbs {
 
 		$use_breadcrumbs = get_theme_mod( 'ignite_breadcrumb', false );
 
-		if( $use_breadcrumbs){
+		if( $use_breadcrumbs ) {
 
-			add_filter( 'ignite_post_content_single_html', array( $this, 'add_breadcrumb' ), 1 );
+			add_action( 'ignite_theme_banner', array( $this, 'add_breadcrumb' ), 20 );
 
 		}
 
 	} // End add_filters
 	
-	public function add_breadcrumb( $content ) {
+	public function add_breadcrumb() {
 
 		$breadcrumb_array = array(
 			array( 
 				'title' => 'Home',
 				'link'  => get_home_url(),
-			)
+			),
 			// Home here so it always exits
 		);
 
@@ -61,19 +61,21 @@ class Ignite_Breadcrumbs {
 
 			$breadcrumb_html = '<ul class="breadcrumbs">';
 
-		foreach( $breadcrumb_array as $crumb ) {
+		foreach ( $breadcrumb_array as $crumb ) {
 
-			$breadcrumb_html .= '<li><a href="' . $crumb['link'] . '">' . $crumb['title'] . '</a></li>';
+			$breadcrumb_html .= '<li><a href="' . esc_url( $crumb['link'] ) . '">' . esc_html( $crumb['title'] ) . '</a></li>';
 
 		}
 
 		$breadcrumb_html .= '</ul>';
 
-		$content = $breadcrumb_html . $content; // Add breadcrumb_html to content
+		echo $breadcrumb_html;
 
-		remove_filter( 'the_content', array( $this, 'add_breadcrumb' ), 11 );
+		//$content = $breadcrumb_html . $content; // Add breadcrumb_html to content
 
-		return $content;
+		remove_action( 'ignite_theme_banner', array( $this, 'add_breadcrumb' ), 20 );
+
+		//return $content;
 
 	} // End add_breadcrumb
 

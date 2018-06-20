@@ -165,6 +165,28 @@ class Ignite_Base_Layout {
 
 		} // End foreach
 
+		$wp_customize->add_setting(
+			'ignite_theme_layout_menu_css_hook',
+			array(
+				'default'   => '',
+				'transport' => 'refresh',
+			)
+		);
+
+		$wp_customize->add_control(
+			'ignite_theme_layout_menu_css_hook_control',
+			array(
+				'label'    => 'Column Menu CSS Hook',
+				'section'  => $section_id,
+				'settings' => 'ignite_theme_layout_menu_css_hook',
+				'type'     => 'text',
+				'active_callback' => function() use ( $wp_customize ) {
+					$use_layouts = $wp_customize->get_setting( 'ignite_use_layouts' )->value();
+					return ( $use_layouts ) ? true : false;
+				},
+			)
+		); // end control
+
 	} // End add_customizer_settings
 
 
@@ -315,7 +337,18 @@ class Ignite_Base_Layout {
 
 				$name = $menu->name;
 
-				$class = $menu->slug . '-ignite-column-menu';
+				$class = array( $menu->slug . '-ignite-column-menu' );
+
+				$class[] = get_theme_mod( 'ignite_theme_layout_menu_css_hook', '' );
+
+				$class = implode( ' ', $class );
+
+				$menu_class = array( 'ignite-accordion-content', 'menu' );
+
+				$menu_args = array(
+					'menu'        => $menu_id,
+					'menu_class'  => implode( ' ', $menu_class ),
+				);
 
 				include ignite_get_theme_path( 'lib/displays/menus/sidebar-menus/column-menu.php' );
 
@@ -446,8 +479,9 @@ class Ignite_Base_Layout {
 		$args = array();
 
 		$default_args = array(
-			'_ignite_post_menu'    => 'default',
-			'_ignite_page_layout'  => 'default',
+			'_ignite_post_menu'     => 'default',
+			'_ignite_page_layout'   => 'default',
+			'_ignite_post_menu_css' => '',
 		);
 
 		foreach ( $default_args as $key => $default ) {
@@ -476,6 +510,8 @@ class Ignite_Base_Layout {
 		$selected_menu = $args['_ignite_post_menu'];
 
 		$selected_layout = $args['_ignite_page_layout'];
+
+		$css_hook = $args['_ignite_post_menu_css'];
 
 		$layouts = $this->layouts;
 
@@ -524,13 +560,14 @@ class Ignite_Base_Layout {
 			$meta_keys = array(
 				'_ignite_post_menu',
 				'_ignite_page_layout',
+				'_ignite_post_menu_css',
 			);
 
 			foreach ( $meta_keys as $key ) {
 
-				$value = sanitize_text_field( $_REQUEST[ $key ] );
+				if ( isset( $_REQUEST[ $key ] ) ) {
 
-				if ( ! empty( $value ) ) {
+					$value = sanitize_text_field( $_REQUEST[ $key ] );
 
 					update_post_meta( $post_id, $key, $value );
 
