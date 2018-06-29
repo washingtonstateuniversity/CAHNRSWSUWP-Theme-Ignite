@@ -6,7 +6,7 @@
 			<input id="ignite-search-form-keyword" type="text" value="<?php echo esc_html( $keyword ); ?>" name="s" placeholder="Search" />
 		</div>
 		<div class="ignite-search-form-field ignite-search-form-field-submit">
-			<input type="submit" id="ignite-search-form-submit" value="Submit" name="submit" />
+			<button type="submit">Search</button>
 		</div>
 	</form>
 </div>
