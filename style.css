@@ -5,7 +5,7 @@
  Author:         CAHNRS Communications
  Author URI:     https://cahnrs.wsu.edu/communications
  Template:       spine
- Version:        2.1.0
+ Version:        2.1.1
 */
 
 /*---------------------------------------------
@@ -2151,7 +2151,7 @@ figure {
 	background-position: center;
 }
 
-.cahnrs-ignite-search-form.basic-search-form .ignite-search-form-field-submit input {
+/*.cahnrs-ignite-search-form.basic-search-form .ignite-search-form-field-submit input {
 	height: 50px;
 	width: 60px;
 	border-radius: 0;
@@ -2161,6 +2161,24 @@ figure {
 	color: #eee;
 	font-size: 0;
 	background-color: transparent;
+}*/
+
+.cahnrs-ignite-search-form.basic-search-form .ignite-search-form-field-submit button {
+	height: 50px;
+	width: 60px;
+	border-radius: 0;
+	outline: none;
+	border: none;
+	text-transform:  uppercase;
+	color: #eee;
+	font-size: 0;
+	background-color: transparent;
+}
+
+.cahnrs-ignite-search-form.basic-search-form .ignite-search-form-field-submit button:before {
+	content:"\f002";
+	font-family: fontAwesome;
+	font-size: 22px;
 }
 
 @media screen and (max-width: 989px) {
