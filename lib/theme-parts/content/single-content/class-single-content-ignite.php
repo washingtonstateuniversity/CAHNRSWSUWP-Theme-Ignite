@@ -33,7 +33,7 @@ class Single_Content_Ignite {
 
 		$html .= '</div>';
 
-		return $html;
+		return apply_filters( 'theme_content_html', $html );
 
 	} // End get_the_footer
 
