@@ -5,6 +5,9 @@
 		<div class="item-title">
 			<h3><?php the_title(); ?></h3>
 		</div>
+		<?php if ( ! empty( $meta ) && is_array( $meta ) ) : ?><div class="item-meta">
+				<?php echo wp_kses_post( implode( ' | ', $meta ) ); ?>
+		</div><?php endif; ?>
 		<div class="item-excerpt">
 			<?php echo wp_kses_post( wp_trim_words( get_the_excerpt(), 25 ) ); ?>
 		</div>

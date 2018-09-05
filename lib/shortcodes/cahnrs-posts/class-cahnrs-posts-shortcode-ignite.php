@@ -30,7 +30,8 @@ class CAHNRS_Posts_Shortcode_Ignite {
 			'per_page' => 5,
 			'show_images' => 1,
 			'show_title' => 1,
-			'show_date' => 1,
+			'show_date' => '',
+			'show_author' => '',
 			'do_link' => 1,
 			'display' => 'promo-list',
 			'tags' => '',
@@ -111,6 +112,20 @@ class CAHNRS_Posts_Shortcode_Ignite {
 					$classes[] = $args['class'];
 
 				}
+
+				$meta = array();
+
+				if ( $atts['show_author'] ) {
+
+					$meta['author'] = '<span class="item-author">Posted by ' . \get_the_author_meta( 'display_name' ) . '</span>';
+
+				} // End if
+
+				if ( $atts['show_date'] ) {
+
+					$meta['date'] = '<span class="item-date">' . \get_the_date() . '</span>';
+
+				} // End if
 
 				ob_start();
 
