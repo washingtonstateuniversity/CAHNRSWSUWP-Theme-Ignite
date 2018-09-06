@@ -117,6 +117,8 @@ class Content_Ignite extends Theme_Part_Ignite {
 
 		} // End if
 
+		$html = apply_filters( 'theme_content_html', $html );
+
 		return apply_filters( 'ignite_content_template_after', $html, $context, $args );
 
 	} // End get_content
