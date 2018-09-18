@@ -99,11 +99,19 @@ class Content_Ignite extends Theme_Part_Ignite {
 
 		if ( empty( $html ) ) {
 
+			var_dump( is_archive() );
+
 			if ( is_archive() ) {
 
 				$html .= '<h1>' . $this->get_content_title( $context, $args ) . '</h1>';
 
 				$html .= $this->get_search( 'archive' );
+
+				ob_start();
+
+				do_action( 'template_before_content' );
+
+				$html .= ob_get_clean();
 
 				$html .= $this->get_content_archive( $context, $args );
 

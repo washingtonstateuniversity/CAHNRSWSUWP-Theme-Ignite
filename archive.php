@@ -10,6 +10,8 @@ include_once CAHNRSIGNITEPATH . 'theme-parts/secondary-menu/class-secondary-menu
 $secondary_menu = new Secondary_Menu_Ignite();
 $secondary_menu->the_menu( 'archive' );
 
+do_action( 'theme_template_after_banner' );
+
 include_once CAHNRSIGNITEPATH . 'theme-parts/content/class-content-ignite.php';
 $content = new Content_Ignite();
 $content->the_content( 'archive' );

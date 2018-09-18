@@ -10,6 +10,8 @@ require_once CAHNRSIGNITEPATH . 'theme-parts/secondary-menu/class-secondary-menu
 $secondary_menu = new Secondary_Menu_Ignite();
 $secondary_menu->the_menu( 'index' );
 
+do_action( 'theme_template_after_banner' );
+
 ob_start();
 
 require locate_template( 'includes/content/single-page.php', false );

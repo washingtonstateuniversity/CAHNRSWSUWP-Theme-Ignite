@@ -10,6 +10,8 @@ require_once CAHNRSIGNITEPATH . 'theme-parts/secondary-menu/class-secondary-menu
 $secondary_menu = new Secondary_Menu_Ignite();
 $secondary_menu->the_menu( 'page' );
 
+do_action( 'theme_template_after_banner' );
+
 ignite_get_part( 'single-content', 'page' );
 
 ignite_get_part( 'footer', 'page' );
