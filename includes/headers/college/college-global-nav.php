@@ -8,6 +8,6 @@
 			</li>
 		</ul>
 	</nav><nav id="college-global-actions">
-		<a href="http://admission.wsu.edu/applications/index.html">Apply</a><a href="http://cahnrs.wsu.edu/academics/prospective/">Request Info</a><a href="https://secure.wsu.edu/give/default.aspx?fund=311">Give</a>
+		<a href="http://admission.wsu.edu/applications/index.html">Apply</a><a href="http://cahnrs.wsu.edu/academics/prospective/">Request Info</a><a href="https://foundation.wsu.edu/give/?fund=c39b3693-1ede-4044-aa2a-f5fed2b62638&utm_source=college-of-agricultural-human-and-natural-resource-sciences-excellence-fund&utm_medium=wsu-link&utm_campaign=agricultural-human-and-natural-resource-sciences">Give</a>
 	</nav>
 </div>
