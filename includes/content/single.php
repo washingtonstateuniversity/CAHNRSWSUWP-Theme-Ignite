@@ -21,7 +21,11 @@
 		<div class="article-content">
 			 <?php the_content() ?>
 		</div>
-		<footer></footer>
+		<footer>
+		<?php if ( comments_open() || get_comments_number() ) : ?>
+     		<?php comments_template(); ?>
+		<?php endif; ?>
+		</footer>
 	</article>
 	<?php endwhile; ?>
 </div>
