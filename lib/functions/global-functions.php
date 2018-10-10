@@ -411,3 +411,52 @@ function ignite_get_template_main( $is_start = true ) {
 	return apply_filters( 'cahnrs_ignite_part_html', $html, 'template-main', array() );
 
 } // End ignite_get_template_main
+
+/**
+* @desc Build custom excerpt from WP_Post object
+* @since 3.0.4
+*
+* @param WP_Post $post WP_Post object
+* @param int $words Count of words to return
+*
+* @return string Excerpt
+*/
+function ignite_get_custom_excerpt( $post, $words = 35 ) {
+
+	if ( ! empty( $post->post_excerpt ) ) {
+
+		return $post->post_excerpt;
+
+	} else {
+
+		$text = strip_shortcodes( $post->post_content );
+
+		$text = str_replace( ']]>', ']]&gt;', $text );
+
+		$text = wp_strip_all_tags( $text );
+
+		$excerpt_length = apply_filters( 'excerpt_length', $words );
+
+		$excerpt_more = apply_filters( 'excerpt_more', ' [...]' );
+
+		$words = preg_split( "/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY );
+
+		if ( count( $words ) > $excerpt_length ) {
+
+			array_pop( $words );
+
+			$text = implode( ' ', $words );
+
+			$text = $text . $excerpt_more;
+
+		} else {
+
+			$text = implode( ' ', $words );
+
+		} // End if
+
+		return apply_filters( 'wp_trim_excerpt', $text, $post->post_content );
+
+	} // End if
+
+} // End cpb_custom_excerpt

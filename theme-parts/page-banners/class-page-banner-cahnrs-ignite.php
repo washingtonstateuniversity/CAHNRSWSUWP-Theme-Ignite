@@ -9,6 +9,23 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 		'parallax' => 1,
 	);
 
+	protected $title_banner_default_args = array(
+		'img'              => '',
+		'img_alt'          => '',
+		'use_post_image'   => '',
+		'inherit_image'    => '',
+		'require_image'    => true,
+		'title'            => '',
+		'use_post_title'   => '',
+		'inherit_title'    => '',
+		'caption'          => '',
+		'use_post_caption' => '',
+		'inherit_caption'  => '',
+		'color'            => '',
+		'height'           => '350px',
+		'width'            => '',
+	);
+
 	protected $settings = array();
 
 	public function the_banner( $context = 'single', $args = array(), $post_id = false ) {
@@ -53,6 +70,9 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 						break;
 					case 'wide-static-slides':
 						$banner_html .= $this->get_wide_static_slides( $args, $context, $post_id );
+						break;
+					case 'title_banner':
+						$banner_html .= $this->get_title_banner( $args, $context, $post_id );
 						break;
 					case 'dynamic-scroll':
 					default:
@@ -579,6 +599,205 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 		} // End Foreach
 
 	} // End
+
+
+	private function get_title_banner( $args, $context, $post_id ){
+
+		$settings = $this->get_title_banner_settings( $args );
+
+		$title = ( ! empty( $settings['title'] ) ) ? $settings['title'] : '';
+
+		$img = ( ! empty( $settings['img'] ) ) ? $settings['img'] : '';
+
+		$caption = ( ! empty( $settings['caption'] ) ) ? $settings['caption'] : '';
+
+		$height = ( ! empty( $settings['height'] ) ) ? $settings['height'] : '300px';
+
+		$style = array();
+
+		if ( ! empty( $settings['width'] ) ) {
+
+			$style[] = 'max-width:' . $settings['width'];
+
+		} // End if
+
+		$style = implode( ';', $style );
+
+		if ( empty( $settings['require_image'] ) ) {
+
+			include __DIR__ . '/displays/title-banner.php';
+
+		} elseif ( ! empty( $settings['img'] ) ) {
+
+			include __DIR__ . '/displays/title-banner.php';
+
+		} // End if
+
+	}
+
+	protected function get_title_banner_settings( $args ) {
+
+		$settings = array();
+
+		if ( is_singular() ) {
+
+			$settings = $this->get_title_banner_singular_settings( $args );
+
+		} elseif ( is_front_page() ) {
+
+			$base_key = 'ignite_theme_banner_title_banner_front_page';
+
+			if ( ! empty( $args['post_type'] ) ) {
+
+				$settings = $this->get_title_banner_singular_settings( $args, $base_key );
+
+			} // End if
+		} // End if
+
+		$settings = array_merge( $this->title_banner_default_args, $settings );
+
+		return $settings;
+
+	} // End get_banner_settings
+
+
+
+
+
+	protected function get_title_banner_singular_settings( $args, $base_key = false ) {
+
+		$settings = array();
+
+		global $post;
+
+		if ( ! empty( $post ) ) {
+
+			if ( empty( $base_key ) ) {
+
+				$base_key = 'ignite_theme_banner_title_banner_' . $post->post_type . '_';
+
+			} else {
+
+				$base_key .= '_';
+
+			} // End if
+
+			foreach ( $this->title_banner_default_args as $key => $default_value ) {
+
+				$settings[ $key ] = get_theme_mod( $base_key . $key, $default_value );
+
+			} // End foreach
+
+			if ( $settings['use_post_image'] ) {
+
+				$post_image = $this->get_title_banner_post_image( $post->ID, $settings['inherit_image'] );
+
+				if ( ! empty( $post_image ) ) {
+
+					$settings['img'] = $post_image;
+
+				} // End if
+			} // End if
+
+			if ( $settings['use_post_title'] ) {
+
+				$post_title = $this->get_title_banner_post_title( $post, $settings['inherit_title'] );
+
+				if ( ! empty( $post_title ) ) {
+
+					$settings['title'] = $post_title;
+
+				} // End if
+			} // End if
+
+			if ( $settings['use_post_caption'] ) {
+
+				$post_excerpt = $this->get_title_banner_post_excerpt( $post, $settings['inherit_caption'] );
+
+				if ( ! empty( $post_excerpt ) ) {
+
+					$settings['caption'] = $post_excerpt;
+
+				} // End if
+			} // End if
+		} // End if
+
+		return $settings;
+
+	} // End get_singular_settings
+
+
+	protected function get_title_banner_post_image( $post_id, $use_ancestors = false ) {
+
+		$post_image = '';
+
+		$post_image_array = ignite_get_post_image( $post_id );
+
+		if ( ! empty( $post_image_array ) ) {
+
+			$post_image = $post_image_array['src'];
+
+		} elseif ( $use_ancestors ) {
+
+			$ancestors = get_post_ancestors( $post_id );
+
+			foreach ( $ancestors as $index => $ancestor_id ) {
+
+				$post_image_array = ignite_get_post_image( $ancestor_id );
+
+				if ( ! empty( $post_image_array ) ) {
+
+					$post_image = $post_image_array['src'];
+
+					break;
+
+				} // End if
+			} // End foreach
+		}// End if
+
+		return $post_image;
+
+	} // End get_post_image
+
+
+	protected function get_title_banner_post_title( $post, $use_ancestors = false ) {
+
+		$post_title = $post->post_title;
+
+		if ( $use_ancestors ) {
+
+			$ancestors = get_post_ancestors( $post );
+
+			$parent = reset( $ancestors );
+
+			$post_title = get_the_title( $parent );
+
+		}// End if
+
+		return $post_title;
+
+	} // End get_post_title
+
+
+	protected function get_title_banner_post_excerpt( $post, $use_ancestors = false ) {
+
+		$post_excerpt = ignite_get_custom_excerpt( $post );
+
+		if ( $use_ancestors ) {
+
+			$ancestors = get_post_ancestors( $post );
+
+			$parent = reset( $ancestors );
+
+			$parent_post = get_post( $parent );
+
+			$post_excerpt = ignite_get_custom_excerpt( $parent_post );
+
+		} // End if
+
+		return $post_excerpt;
+
+	} // End get_post_title
 
 
 } // End Page_Banner_CAHNRS_Ignite
