@@ -660,10 +660,6 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 
 	} // End get_banner_settings
 
-
-
-
-
 	protected function get_title_banner_singular_settings( $args, $base_key = false ) {
 
 		$settings = array();

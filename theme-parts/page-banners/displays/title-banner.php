@@ -1,5 +1,5 @@
 <div class="ignite-title-banner">
-	<div class="ignite-banner-background unbound recto verso" style="background-image:url('http://s3-us-west-2.amazonaws.com/wp2.cahnrs.wsu.edu/wp-content/uploads/sites/35/2018/10/header-banner-33-home.jpg');">
+	<div class="ignite-banner-background unbound recto verso" style="background-image:url(<?php echo esc_url( $img ); ?>)">
 	</div>
 	<div class="ignite-banner-content" style="min-height:<?php echo esc_attr( $height ); ?>;">
 		<div class="ignite-banner-content-inner">
