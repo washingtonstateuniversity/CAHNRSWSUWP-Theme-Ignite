@@ -59,6 +59,7 @@ class Customizer_CAHNRS_Ignite {
 		'none'             => 'No Banner',
 		'dynamic-scroll'   => 'Wide Banner',
 		'banner-slideshow' => 'Banner Slideshow',
+		'title_banner'     => 'Title Banner',
 	);
 
 	protected $heights = array(
@@ -326,6 +327,23 @@ class Customizer_CAHNRS_Ignite {
 			),
 		);
 
+		$title_banner_settings = array(
+			'img'              => '',
+			'img_alt'          => '',
+			'use_post_image'   => '',
+			'inherit_image'    => '',
+			'require_image'    => true,
+			'title'            => '',
+			'use_post_title'   => '',
+			'inherit_title'    => '',
+			'caption'          => '',
+			'use_post_caption' => '',
+			'inherit_caption'  => '',
+			'color'            => '',
+			'height'           => '350px',
+			'width'            => '',
+		);
+
 		$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
 
 		foreach ( $taxonomies as $index => $taxonomy ) {
@@ -341,6 +359,24 @@ class Customizer_CAHNRS_Ignite {
 		foreach ( $post_types as $index => $post_type ) {
 
 			$name = str_replace( '-', '_', $post_type->name );
+
+			// Added for Title Banner
+			$base_setting = 'ignite_theme_banner_title_banner_' . $name . '_';
+
+			// Added for Title Banner
+			$type_setting = 'ignite_theme_banner_' . $name;
+
+			foreach ( $title_banner_settings as $key => $default_value ) {
+
+				$wp_customize->add_setting(
+					$base_setting . $key,
+					array(
+						'default'   => $default_value,
+						'transport' => 'refresh',
+					)
+				);
+	
+			} // End foreach
 
 			$wp_customize->add_setting(
 				'_cahnrswp_ignite_banner_' . $name . '_type',
@@ -632,6 +668,110 @@ class Customizer_CAHNRS_Ignite {
 					},
 				)
 			); // end control
+
+			// Add Title Banner Controls
+
+			// Added for Title Banner
+			$base_setting = 'ignite_theme_banner_title_banner_' . $name . '_';
+
+			// Added for Title Banner
+			$type_setting = '_cahnrswp_ignite_banner_' . $name . '_type';
+
+			$wp_customize->add_control(
+				$base_setting . 'title_control',
+				array(
+					'label'      => $post_type->label . ': Banner Title',
+					'section'    => $section_id,
+					'settings'   => $base_setting . 'title',
+					'active_callback' => function() use ( $wp_customize, $type_setting ) {
+						$selected_banner = $wp_customize->get_setting( $type_setting )->value();
+						return ( 'title_banner' === $selected_banner ) ? true : false;
+					},
+				)
+			);
+	
+			$wp_customize->add_control(
+				$base_setting . 'height_control',
+				array(
+					'label'      => $post_type->label . ': Banner Height (Include Units)',
+					'section'    => $section_id,
+					'settings'   => $base_setting . 'height',
+					'active_callback' => function() use ( $wp_customize, $type_setting ) {
+						$selected_banner = $wp_customize->get_setting( $type_setting )->value();
+						return ( 'title_banner' === $selected_banner ) ? true : false;
+					},
+				)
+			);
+	
+			$wp_customize->add_control(
+				$base_setting . 'width_control',
+				array(
+					'label'      => $post_type->label . ': Banner Max Width',
+					'section'    => $section_id,
+					'settings'   => $base_setting . 'width',
+					'active_callback' => function() use ( $wp_customize, $type_setting ) {
+						$selected_banner = $wp_customize->get_setting( $type_setting )->value();
+						return ( 'title_banner' === $selected_banner ) ? true : false;
+					},
+				)
+			);
+	
+			$wp_customize->add_control(
+				new WP_Customize_Image_Control(
+					$wp_customize,
+					$base_setting . 'img_control',
+					array(
+						'label' => $post_type->label . ': Banner Image',
+						'section' => $section_id,
+						'settings' => $base_setting . 'img',
+						'active_callback' => function() use ( $wp_customize, $type_setting ) {
+							$selected_banner = $wp_customize->get_setting( $type_setting )->value();
+							return ( 'title_banner' === $selected_banner ) ? true : false;
+						},
+					)
+				)
+			);
+	
+			$wp_customize->add_control(
+				$base_setting . 'img_alt_control',
+				array(
+					'label'      => $post_type->label . ': Image Alt Text',
+					'section'    => $section_id,
+					'settings'   => $base_setting . 'img_alt',
+					'active_callback' => function() use ( $wp_customize, $type_setting ) {
+						$selected_banner = $wp_customize->get_setting( $type_setting )->value();
+						return ( 'title_banner' === $selected_banner ) ? true : false;
+					},
+				)
+			);
+	
+			$checkboxes = array(
+				'use_post_image'   => 'Use Post Image',
+				'inherit_image'    => 'Inherit Image',
+				'require_image'    => 'Require Image',
+				'use_post_title'   => 'Use Post Title',
+				'inherit_title'    => 'Inherit Title',
+				'use_post_caption' => 'Use Post Excerpt/Caption',
+				'inherit_caption'  => 'Inherit Caption',
+			);
+	
+			foreach ( $checkboxes as $setting => $label ) {
+	
+				$wp_customize->add_control(
+					$base_setting . $setting . '_control',
+					array(
+						'label'    => $label,
+						'section'  => $section_id,
+						'settings' => $base_setting . $setting,
+						'type'     => 'checkbox',
+						'active_callback' => function() use ( $wp_customize, $type_setting ) {
+							$selected_banner = $wp_customize->get_setting( $type_setting )->value();
+							return ( 'title_banner' === $selected_banner ) ? true : false;
+						},
+					)
+				); // end control
+	
+			} // End foreach
 
 		} // End Foreach
 
