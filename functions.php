@@ -38,6 +38,8 @@ class Functions_Ignite {
 
 		$this->add_feature_banners();
 
+		$this->add_modules();
+
 		$this->add_sidebars();
 
 		$this->add_post_types();
@@ -62,6 +64,14 @@ class Functions_Ignite {
 		require_once __DIR__ . '/lib/theme-parts/feature-banner/class-feature-banner.php';
 
 	} // End add_feature_banners
+
+
+	protected function add_modules() {
+
+		require_once __DIR__ . '/lib/modules/subtitle/ignite_subtitle_module.php';
+
+
+	}
 
 
 	protected function add_shortcodes() {
