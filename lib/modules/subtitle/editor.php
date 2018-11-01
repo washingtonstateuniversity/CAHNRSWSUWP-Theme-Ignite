@@ -7,3 +7,4 @@
         </div>
     </div>
 </div>
+<?php wp_nonce_field( 'add_subtitle', 'subtitle_nonce' ); ?>

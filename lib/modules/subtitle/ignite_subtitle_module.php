@@ -4,13 +4,11 @@ class Ignite_Subtitle_Module {
 
 public function __construct() {
 
-
     add_action( 'edit_form_after_title', array( $this, 'add_subtitle_settings' ), 9 );
 
     add_action( 'save_post_page', array( $this, 'save_post' ), 10, 3 );
 
 }
-
 
 public function add_subtitle_settings( $post ) {
 
@@ -22,14 +20,11 @@ public function add_subtitle_settings( $post ) {
 
         echo $html;
         
-
     } // End if
 
 } // End add_feature_settings
 
 protected function get_edit_form( $post_id ) {
-
-    
 
     $subtitle = get_post_meta( $post_id, '_page_subtitle', true );
 
@@ -60,9 +55,16 @@ public function save_post( $post_id, $post, $update ) {
 
     }
 
-    // TO DO: Sanitize / Nonce this
-
-            
+    if ( 
+        ! isset( $_POST['subtitle_nonce'] ) 
+        || ! wp_verify_nonce( $_POST['subtitle_nonce'], 'add_subtitle' ) 
+    ) {
+    
+       print 'Sorry, your nonce did not verify.';
+       exit;
+    
+    } else {
+    
         if ( isset( $_POST[ '_page_subtitle' ] ) ) {
 
             $val = $_POST[ '_page_subtitle' ];
@@ -70,7 +72,7 @@ public function save_post( $post_id, $post, $update ) {
             update_post_meta( $post_id, '_page_subtitle', $val );
 
         } // End if
-    
+    }  
 
 } // End save_post
 
