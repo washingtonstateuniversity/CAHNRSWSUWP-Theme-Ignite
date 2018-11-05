@@ -4,75 +4,77 @@ class Ignite_Subtitle_Module {
 
 public function __construct() {
 
-    add_action( 'edit_form_after_title', array( $this, 'add_subtitle_settings' ), 9 );
+	add_action( 'edit_form_after_title', array( $this, 'add_subtitle_settings' ), 9 );
 
-    add_action( 'save_post_page', array( $this, 'save_post' ), 10, 3 );
+	add_action( 'save_post_page', array( $this, 'save_post' ), 10, 3 );
 
 }
 
 public function add_subtitle_settings( $post ) {
 
-    if ( 'page' === $post->post_type ) {
+	if ( 'page' === $post->post_type ) {
 
-        $post_id = $post->ID;
+		$post_id = $post->ID;
 
-        $html = $this->get_edit_form( $post_id );
+		$html = $this->get_edit_form( $post_id );
 
-        echo $html;
-        
-    } // End if
+		echo $html;
+
+	} // End if
 
 } // End add_feature_settings
 
 protected function get_edit_form( $post_id ) {
 
-    $subtitle = get_post_meta( $post_id, '_page_subtitle', true );
+	$subtitle = get_post_meta( $post_id, '_page_subtitle', true );
 
-    $html = '';
+	$html = '';
 
-    ob_start();
+	ob_start();
 
-    include __DIR__ . '/editor.php';
+	include __DIR__ . '/editor.php';
 
-    $html .= ob_get_clean();
+	$html .= ob_get_clean();
 
-    return $html;
+	return $html;
 
 } // End get_data_edit_form
 
 
 public function save_post( $post_id, $post, $update ) {
 
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 
-        return;
+		return;
 
-    }
+	}
 
-    if ( ! current_user_can( 'edit_posts' ) ) {
+	if ( ! current_user_can( 'edit_posts' ) ) {
 
-        return;
+		return;
 
-    }
+	}
 
-    if ( 
-        ! isset( $_POST['subtitle_nonce'] ) 
-        || ! wp_verify_nonce( $_POST['subtitle_nonce'], 'add_subtitle' ) 
-    ) {
-    
-       print 'Sorry, your nonce did not verify.';
-       exit;
-    
-    } else {
-    
-        if ( isset( $_POST[ '_page_subtitle' ] ) ) {
+	if ( isset ( $_POST['subtitle_nonce'] ) ) {
 
-            $val = $_POST[ '_page_subtitle' ];
+		if ( wp_verify_nonce( $_POST['subtitle_nonce'], 'add_subtitle' ) ) {
 
-            update_post_meta( $post_id, '_page_subtitle', $val );
+			if ( isset( $_POST[ '_page_subtitle' ] ) ) {
 
-        } // End if
-    }  
+				$val = $_POST[ '_page_subtitle' ];
+
+				update_post_meta( $post_id, '_page_subtitle', $val );
+
+			} // End if
+
+		} else {
+
+			print 'Sorry, your nonce did not verify.';
+			exit;
+
+		}
+
+	}
 
 } // End save_post
 
