@@ -16,7 +16,7 @@ ob_start();
 
 require locate_template( 'includes/content/single-post.php', false );
 
-$html = ob_get_clean();
+$html = apply_filters( 'theme_content_html', ob_get_clean() );
 
 echo apply_filters( 'cahnrs_ignite_page_html', $html );
 
