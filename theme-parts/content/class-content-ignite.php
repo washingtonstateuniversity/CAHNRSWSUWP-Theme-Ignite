@@ -170,7 +170,7 @@ class Content_Ignite extends Theme_Part_Ignite {
 
 		} // End if
 
-		return $title;
+		return apply_filters( 'template_title', $title );
 
 	} // End get_content_title
 
