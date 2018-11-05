@@ -102,6 +102,12 @@ class Content_Ignite extends Theme_Part_Ignite {
 			if ( is_archive() ) {
 
 				$html .= '<h1>' . $this->get_content_title( $context, $args ) . '</h1>';
+				
+				ob_start();
+
+ 				do_action( 'template_after_title' );
+
+ 				$html .= ob_get_clean();
 
 				$html .= $this->get_search( 'archive' );
 
