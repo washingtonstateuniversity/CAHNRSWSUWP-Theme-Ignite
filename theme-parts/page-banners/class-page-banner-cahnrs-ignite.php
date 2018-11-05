@@ -17,6 +17,7 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 		'require_image'    => true,
 		'title'            => '',
 		'use_post_title'   => '',
+		'use_post_subtitle'=> '',
 		'inherit_title'    => '',
 		'caption'          => '',
 		'use_post_caption' => '',
@@ -606,6 +607,8 @@ class Page_Banner_CAHNRS_Ignite extends Theme_Part_Ignite {
 		$settings = $this->get_title_banner_settings( $args );
 
 		$title = ( ! empty( $settings['title'] ) ) ? $settings['title'] : '';
+
+		$subtitle = ( ! empty( $settings['use_post_subtitle'] ) ) ? get_post_meta(get_the_ID(), '_page_subtitle', true) : '';
 
 		$img = ( ! empty( $settings['img'] ) ) ? $settings['img'] : '';
 

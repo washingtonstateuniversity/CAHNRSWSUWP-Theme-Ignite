@@ -336,6 +336,7 @@ class Customizer_CAHNRS_Ignite {
 			'title'            => '',
 			'use_post_title'   => '',
 			'inherit_title'    => '',
+			'use_post_subtitle'=> '',
 			'caption'          => '',
 			'use_post_caption' => '',
 			'inherit_caption'  => '',
@@ -751,6 +752,7 @@ class Customizer_CAHNRS_Ignite {
 				'require_image'    => 'Require Image',
 				'use_post_title'   => 'Use Post Title',
 				'inherit_title'    => 'Inherit Title',
+				'use_post_subtitle'=> 'Use Subtitle',
 				'use_post_caption' => 'Use Post Excerpt/Caption',
 				'inherit_caption'  => 'Inherit Caption',
 			);
