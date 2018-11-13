@@ -5,7 +5,7 @@
  Author:         CAHNRS Communications
  Author URI:     https://cahnrs.wsu.edu/communications
  Template:       spine
- Version:        2.1.6
+ Version:        2.1.7
 */
 
 /*---------------------------------------------
@@ -917,6 +917,9 @@ figure {
 	bottom: 0;
 	left: -2rem;
 	right: 0;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .ignite-title-banner .ignite-banner-content {

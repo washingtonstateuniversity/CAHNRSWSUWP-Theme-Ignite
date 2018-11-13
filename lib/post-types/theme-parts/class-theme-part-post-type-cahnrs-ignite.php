@@ -58,20 +58,21 @@ class Theme_Part_Post_Type_CAHNRS_Ignite {
 			);
 
 			$args = array(
-				'labels'             => $labels,
-				'description'        => 'Reusable Theme Content.',
-				'public'             => true,
+				'labels'              => $labels,
+				'description'         => 'Reusable Theme Content.',
+				'public'              => true,
 				//'publicly_queryable' => true,
 				//'show_ui'            => true,
-				'show_in_menu'       => true,
-				'taxonomies'          => array( 'category', ' post_tag' ),
-				'rewrite'            => array( 'slug' => 'parts' ),
-				'capability_type'    => 'post',
-				'show_in_rest'       => true,
-				'has_archive'        => false,
-				'hierarchical'       => false,
-				'menu_position'      => null,
-				'supports'           => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' )
+				'show_in_menu'        => true,
+				'taxonomies'           => array( 'category', ' post_tag' ),
+				'rewrite'             => array( 'slug' => 'parts' ),
+				'capability_type'     => 'post',
+				'exclude_from_search' => true,
+				'show_in_rest'        => true,
+				'has_archive'         => false,
+				'hierarchical'        => false,
+				'menu_position'       => null,
+				'supports'            => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' )
 			);
 
 			register_post_type( 'theme_part', $args );
