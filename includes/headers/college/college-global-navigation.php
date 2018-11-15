@@ -440,7 +440,7 @@ $global_nav = array(
 				'menu-items' => array(
 					array(
 						'label' => 'Business Center',
-						'url' => 'http://cahnrs.wsu.edu/fs/home/business-services/business-centers/',
+						'url' => 'https://business-center.cw.wsu.edu/',
 					),
 					array(
 						'label' => 'Extension Support',
