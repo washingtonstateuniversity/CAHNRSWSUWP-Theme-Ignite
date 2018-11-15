@@ -24,7 +24,7 @@ class CAHNRS_Search_Shortcode_Ignite {
 		$inner_html = '';
 
 		$default_atts = array(
-			'results_url' => '',
+			'results_url' => site_url(),
 			'post_type' => '',
 			'per_page' => '',
 			'show_images' => '',
@@ -60,7 +60,7 @@ class CAHNRS_Search_Shortcode_Ignite {
 			'remote_tags' => '',
 			'remote_tag_relation' => '',
 			'keyword' => '',
-			'resluts_page' => '',
+			'results_page' => '',
 			'show_results' => 1,
 		);
 
@@ -68,7 +68,7 @@ class CAHNRS_Search_Shortcode_Ignite {
 
 		ob_start();
 
-		$exclude = array( 'resluts_page', 'show_results', 'keyword', 'display' );
+		$exclude = array( 'results_page', 'show_results', 'keyword', 'display', 'results_url', 'search_type' );
 
 		switch ( $atts['display'] ) {
 
