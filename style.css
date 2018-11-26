@@ -2142,6 +2142,69 @@ figure {
 	}
 }
 
+@media only screen and (max-width: 1200px) {
+	#college-header-horiz-menu ul.menu {
+    	width: 275px;
+		position: absolute;
+		top: 0;
+		padding-top: 45px;
+	}
+	#college-header-horiz-menu ul.menu > li {
+		margin: 0;
+		padding: 0;
+		float: none;
+		position: relative;
+		background-color: #fff;
+		display: none;
+	}
+	#college-header-horiz-menu ul.menu:hover > li {
+		display: block;
+	}
+	#college-header-horiz-menu {
+		height: 45px;
+	}
+	#college-header-horiz-menu ul.menu:before {
+		content: "\f0c9";
+		display: block;
+		height: 45px;
+		width: 60px;
+		line-height: 45px;
+		position:absolute;
+		top: 0;
+		left: 0;
+		color: #a6102d;;
+		font-family:fontAwesome;
+		text-align: center;
+		font-size: 25px;
+		border-right: 1px solid #999;
+		cursor: pointer;
+	}
+		
+	/*#college-header-horiz-menu ul.menu > li > ul > li {
+		display: none;
+	}
+	#college-header-horiz-menu ul.menu > li:hover > ul > li {
+		display: block;
+	}*/
+	#college-header-horiz-menu ul.menu > li > ul {
+		display: none;
+	}
+	/*#college-header-horiz-menu ul.menu > li > ul {
+		position: absolute;
+		top: 0;
+		left: 100%;
+		background-color: #fff;
+		margin: 0;
+		padding: 0;
+		width: 200px;
+		border-top: 1px solid #ddd;
+		border-left: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+		z-index: 5;
+		display: none;
+	}*/
+}
+
 /* Header: Search  ------------------------- */
 
 .ignite-header-banner-wrapper .cahnrs-ignite-search-form {
