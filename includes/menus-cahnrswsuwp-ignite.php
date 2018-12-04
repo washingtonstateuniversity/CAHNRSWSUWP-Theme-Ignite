@@ -18,12 +18,12 @@ class Menus_CAHNRSWSUWP_Ignite {
 
 	/**
 	 * Loop through menu items and auto add child link if has children
-	 * 
+	 *
 	 * @since 2.1.8
-	 * 
+	 *
 	 * @param array $sorted_menu_items Array of Menu objects.
 	 * @param array $args Menu args
-	 * 
+	 *
 	 * @return array Modified menu array.
 	 */
 	public function make_mobile( $sorted_menu_items, $args ) {
