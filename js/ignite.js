@@ -446,36 +446,36 @@ var ignite = {
 
 		bind_events: function() {
 
-			jQuery('body' ).on( 
-				'click',
-				'.menu-item-has-children.is-mobile-ready > a',
-				function( event ) {
-					ignite.menus.toggle_children( jQuery( this ).closest('li'), event );
-				}
-			)
+			var menu = jQuery( 'nav.is-mobile' );
+
+			menu.on(
+                'click',
+                '.menu-item-has-children > a',
+                function( e ) {
+                    e.preventDefault();
+                    var menu_item = jQuery(this).closest('li');
+                    ignite.menus.toggle_menu( menu_item );
+                }
+            );
+
+            menu.on(
+                'click',
+                'a.toggle-menu',
+                function( e ) {
+                    e.preventDefault();
+                    ignite.menus.toggle_menu( menu );
+                }
+            );
 
 		},
 
-		toggle_children: function( menu_parent, event ) {
-
-			event.preventDefault();
-
-			if ( menu_parent.hasClass( 'menu-visible' ) ) {
-
-				menu_parent.children('ul').slideUp('fast');
-
-				menu_parent.removeClass( 'menu-visible' );
-
-			} else {
-
-				menu_parent.children('ul').slideDown('fast');
-
-				menu_parent.addClass( 'menu-visible' );
-
-			} // End if
-
-		} // End toggle_children
-
+		toggle_menu : function( menu_item ){
+            if ( menu_item.hasClass('visible-menu') ) {
+                menu_item.removeClass('visible-menu');
+            } else {
+                menu_item.addClass('visible-menu');
+            }// End if
+        }
 	},
 	
 	accordions: {

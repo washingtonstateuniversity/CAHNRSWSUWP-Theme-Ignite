@@ -17,7 +17,7 @@ class Menus_CAHNRSWSUWP_Ignite {
 
 
 	/**
-	 * loop through menu items and auto add child link if has children
+	 * Loop through menu items and auto add child link if has children
 	 * 
 	 * @since 2.1.8
 	 * 
@@ -52,11 +52,11 @@ class Menus_CAHNRSWSUWP_Ignite {
 					// Get menu item classes.
 					$classes = ( isset( $menu_item->classes ) ) ? $menu_item->classes : array();
 
+					// Add menu item to new array.
+					$new_array[] = $menu_item;
+
 					// Check if menu item has children.
 					if ( is_array( $classes ) && in_array( 'menu-item-has-children', $classes, true ) ) {
-
-						// Add menu item to new array.
-						$new_array[] = $menu_item;
 
 						$menu_id = $menu_item->ID;
 
@@ -80,11 +80,7 @@ class Menus_CAHNRSWSUWP_Ignite {
 
 						$new_array[] = $new_item;
 
-					} else {
-
-						$new_array[] = $menu_item;
-
-					}// End if
+					} // End if
 				} // End foreach
 
 				$sorted_menu_items = $new_array;
