@@ -24,7 +24,7 @@ class CAHNRS_Search_Shortcode_Ignite {
 		$inner_html = '';
 
 		$default_atts = array(
-			'results_url' => '',
+			'results_url' => '', // default to the site url - WP get site url or something like that
 			'post_type' => '',
 			'per_page' => '',
 			'show_images' => '',

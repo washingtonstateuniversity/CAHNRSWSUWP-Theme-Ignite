@@ -1711,6 +1711,14 @@ class Customizer_CAHNRS_Ignite {
 		); // end add_setting
 
 		$wp_customize->add_setting(
+			'cahnrswsuwp_ignite_make_mobile_header_horizontal',
+			array(
+				'default'   => 0,
+				'transport' => 'refresh',
+			)
+		); // end add_setting
+
+		$wp_customize->add_setting(
 			'_cahnrswp_header_horizontal_nav_mobile',
 			array(
 				'default'   => 0,
@@ -2137,6 +2145,16 @@ class Customizer_CAHNRS_Ignite {
 				'settings' => '_cahnrswp_header_horizontal_nav',
 				'type'     => 'select',
 				'choices'  => $this->menus,
+			)
+		); // end control
+
+		$wp_customize->add_control(
+			'cahnrswsuwp_ignite_make_mobile_header_horizontal',
+			array(
+				'label'    => 'Mobile Layout',
+				'section'  => $section_id,
+				'settings' => 'cahnrswsuwp_ignite_make_mobile_header_horizontal',
+				'type'     => 'checkbox',
 			)
 		); // end control
 

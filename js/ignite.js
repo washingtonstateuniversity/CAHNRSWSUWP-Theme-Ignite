@@ -433,7 +433,49 @@ var ignite = {
 		ignite.banners.bind_events();
 		ignite.headers.bind_events();
 		ignite.accordions.bind_events();
+		ignite.menus.init();
 		
+	},
+
+	menus: {
+
+		init: function() {
+
+			ignite.menus.bind_events();
+		},
+
+		bind_events: function() {
+
+			var menu = jQuery( 'nav.is-mobile' );
+
+			menu.on(
+                'click',
+                '.menu-item-has-children > a',
+                function( e ) {
+                    e.preventDefault();
+                    var menu_item = jQuery(this).closest('li');
+                    ignite.menus.toggle_menu( menu_item );
+                }
+            );
+
+            menu.on(
+                'click',
+                'a.toggle-menu',
+                function( e ) {
+                    e.preventDefault();
+                    ignite.menus.toggle_menu( menu );
+                }
+            );
+
+		},
+
+		toggle_menu : function( menu_item ){
+            if ( menu_item.hasClass('visible-menu') ) {
+                menu_item.removeClass('visible-menu');
+            } else {
+                menu_item.addClass('visible-menu');
+            }// End if
+        }
 	},
 	
 	accordions: {
@@ -598,33 +640,6 @@ var ignite = {
 						
 					}
 				);
-
-				/*jQuery( 'body' ).on( 
-					'click', 
-					'#college-global-nav > ul > li > a', 
-					function( event ) {
-						
-						var p = jQuery( this ).closest( 'li' );
-						
-						if ( p.hasClass( 'active' ) ) {
-							
-							p.removeClass( 'active' );
-							
-						} else {
-							
-							p.addClass( 'active' );
-							
-						}// End if
-						
-						if ( 'absolute' === jQuery( '#college-global-navigation .college-global' ).css( 'position' ) ) {
-							event.preventDefault();
-							jQuery( '#college-global-navigation .college-global' ).slideToggle();
-							
-						} // end if
-						
-					} 
-				); // End on click
-				*/
 				
 				jQuery( '#college-global-navigation .top-menu-item' ).hover(
 					function() { 
