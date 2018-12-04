@@ -36,6 +36,8 @@ class Functions_Ignite {
 
 		require_once __DIR__ . '/classes/class-post-editor-cahnrs-ignite.php';
 
+		require_once __DIR__ . '/includes/menus-cahnrswsuwp-ignite.php';
+
 		$this->add_feature_banners();
 
 		$this->add_modules();
