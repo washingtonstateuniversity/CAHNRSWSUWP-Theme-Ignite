@@ -83,7 +83,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Internships',
-						'url' => 'http://ctll.cahnrs.wsu.edu/internships/internship-events/',
+						'url' => 'https://cahnrs.wsu.edu/academics/internships/',
 					),
 				),
 			),
@@ -164,7 +164,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Internships',
-						'url' => 'http://ctll.cahnrs.wsu.edu/internships/internship-events/',
+						'url' => 'https://cahnrs.wsu.edu/academics/internships/',
 					),
 					array(
 						'label' => 'Academic Departments',
