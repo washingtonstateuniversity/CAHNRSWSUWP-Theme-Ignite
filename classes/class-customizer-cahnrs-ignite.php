@@ -145,6 +145,9 @@ class Customizer_CAHNRS_Ignite {
 
 		$this->customize_footer( $wp_customize, $panel );
 
+		// Add section to Spine's advanced
+		$this->customize_advanced( $wp_customize );
+
 	} // end customize_register
 
 
@@ -2282,6 +2285,34 @@ class Customizer_CAHNRS_Ignite {
 		); // end control
 
 	} // end customize_theme
+
+	private function customize_advanced( $wp_customize ) {
+		$wp_customize->add_setting(
+			'_cahnrswp_link_author_to_posts',
+			array(
+				'default'   => true,
+				'sanitize_callback' => 'checkbox_callback',
+			)
+		); // end add_setting
+
+		$wp_customize->add_control(
+			'_cahnrswp_link_author_to_posts',
+			array(
+				'label'       => 'Link Post Author to Posts',
+				'description' => __( "On a single post, insert a link around the author's name to a list of posts by that author.", 'spine' ),
+				'section'     => 'section_spine_advanced_options',
+				'settings'    => '_cahnrswp_link_author_to_posts',
+				'type'        => 'checkbox',
+				'priority'    => 99,
+			)
+		); // end control
+
+		//Start checkbox callback
+		function checkbox_callback( $checked ) {
+			return ( ( isset( $checked ) && true === $checked ) ? true : false );
+		}
+	}
+	// end customize_theme
 
 
 	private function customize_layout_options( $wp_customize, $panel ) {
