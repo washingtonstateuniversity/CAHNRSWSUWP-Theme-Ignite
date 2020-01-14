@@ -8,7 +8,7 @@ echo ignite_get_template_main();
 ?><header id="site-header" class="county-theme">
 	<div class="site-header-inner">
 		<nav class="site-nav">
-<a href="https://cahnrs.wsu.edu">CAHNRS</a><a href="https://cahnrs.wsu.edu">EXTENSION</a><?php if ( ! is_front_page() ) : ?><a class="is-this-site" href="<?php echo esc_url( $site_url ); ?>"><?php echo esc_html( $site_title ); ?></a><?php endif; ?>
+<a href="https://cahnrs.wsu.edu">CAHNRS</a><a href="https://extension.wsu.edu">EXTENSION</a><?php if ( ! is_front_page() ) : ?><a class="is-this-site" href="<?php echo esc_url( $site_url ); ?>"><?php echo esc_html( $site_title ); ?></a><?php endif; ?>
 		</nav>
 		<?php if ( is_front_page() ) : ?><div class="site-title">
 			<a href="<?php echo esc_url( $site_url ); ?>"><?php echo esc_html( $site_title ); ?></a>
