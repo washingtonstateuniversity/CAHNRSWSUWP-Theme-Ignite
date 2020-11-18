@@ -124,7 +124,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Transfer Students',
-						'url' => 'http://cahnrs.wsu.edu/academics/academic-advising/',
+						'url' => 'http://cahnrs.wsu.edu/academics/transfer/',
 					),
 					array(
 						'label' => 'Articulation Agreements',
@@ -142,7 +142,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Academic Advising',
-						'url' => 'http://cahnrs.wsu.edu/academics/transfer/',
+						'url' => 'http://cahnrs.wsu.edu/academics/academic-advising/',
 					),
 					array(
 						'label' => 'Clubs & Student Organizations',
