@@ -26,7 +26,7 @@ class CAHNRS_News_Shortcode_Ignite extends Shortcode_CAHNRS_Ignite {
 		$inner_html = '';
 
 		$default_atts = array(
-			'url' => 'http://news.cahnrs.wsu.edu/',
+			'url' => 'https://news.cahnrs.wsu.edu/',
 			'per_page' => 5,
 			'show_images' => 1,
 			'show_title' => 1,
