@@ -47,7 +47,7 @@
 							<a href="http://cahnrs.wsu.edu/academics/scholarships/">Scholarships</a>
 						</li>
 						<li class="c-submenu-item">
-							<a href="http://ctll.cahnrs.wsu.edu/internships/internship-events/">Internships</a>
+							<a href="https://cahnrs.wsu.edu/academics/internships/">Internships</a>
 						</li>
 						<li class="c-submenu-item">
 							<a href="http://cahnrs.wsu.edu/academics/student-life/">Careers & Clubs</a>
@@ -88,7 +88,7 @@
 							<a href="http://extension.wsu.edu/programs/">Programs</a>
 						</li>
 						<li class="c-submenu-item">
-							<a href="http://extension.wsu.edu/learn/">Publications</a>
+							<a href="https://pubs.extension.wsu.edu/">Publications</a>
 						</li>
 						<li class="c-submenu-item">
 							<a href="http://extension.wsu.edu/locations/">Locations</a>
