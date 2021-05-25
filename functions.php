@@ -7,7 +7,7 @@
 
 class Functions_Ignite {
 
-	public static $version = '0.0.5';
+	public static $version = '2.2.6';
 
 	public function __construct() {
 
