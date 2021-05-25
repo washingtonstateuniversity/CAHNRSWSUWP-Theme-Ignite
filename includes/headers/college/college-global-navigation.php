@@ -67,7 +67,7 @@ $global_nav = array(
 				'menu-items' => array(
 					array(
 						'label' => 'Latest News',
-						'url' => 'http://cahnrs.wsu.edu/about/featured-news/',
+						'url' => 'https://news.cahnrs.wsu.edu/',
 					),
 					array(
 						'label' => 'Undergraduate Degrees',
@@ -83,7 +83,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Internships',
-						'url' => 'http://ctll.cahnrs.wsu.edu/internships/internship-events/',
+						'url' => 'https://cahnrs.wsu.edu/academics/internships/',
 					),
 				),
 			),
@@ -99,7 +99,7 @@ $global_nav = array(
 			),
 			array(
 				'label' => 'Give',
-				'url' => 'https://secure.wsu.edu/give/default.aspx?fund=311',
+				'url' => 'https://foundation.wsu.edu/give/?fund=c39b3693-1ede-4044-aa2a-f5fed2b62638&utm_source=college-of-agricultural-human-and-natural-resource-sciences-excellence-fund&utm_medium=wsu-link&utm_campaign=agricultural-human-and-natural-resource-sciences',
 			),
 		),
 	),
@@ -124,7 +124,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Transfer Students',
-						'url' => 'http://cahnrs.wsu.edu/academics/academic-advising/',
+						'url' => 'http://cahnrs.wsu.edu/academics/transfer/',
 					),
 					array(
 						'label' => 'Articulation Agreements',
@@ -142,15 +142,15 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Academic Advising',
-						'url' => 'http://cahnrs.wsu.edu/academics/transfer/',
+						'url' => 'http://cahnrs.wsu.edu/academics/academic-advising/',
 					),
 					array(
 						'label' => 'Clubs & Student Organizations',
-						'url' => 'http://cahnrs.wsu.edu/academics/student-life/clubs/',
+						'url' => 'https://cahnrs.wsu.edu/academics/clubs/',
 					),
 					array(
 						'label' => 'Ambassadors',
-						'url' => 'http://cahnrs.wsu.edu/academics/student-life/ambassadors/',
+						'url' => 'https://cahnrs.wsu.edu/academics/ambassadors/',
 					),
 				),
 			),
@@ -164,7 +164,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Internships',
-						'url' => 'http://ctll.cahnrs.wsu.edu/internships/internship-events/',
+						'url' => 'https://cahnrs.wsu.edu/academics/internships/',
 					),
 					array(
 						'label' => 'Academic Departments',
@@ -184,7 +184,7 @@ $global_nav = array(
 			),
 			array(
 				'label' => 'Visit a WSU Campus',
-				'url' => 'http://admission.wsu.edu/visits/index.html',
+				'url' => 'https://admission.wsu.edu/visits/',
 			),
 			array(
 				'label' => 'Apply to WSU',
@@ -257,11 +257,11 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Invention Disclosure',
-						'url' => 'http://cahnrs.wsu.edu/research/intellectual-property/#invention',
+						'url' => 'https://cahnrs.wsu.edu/research/home/intellectual-property/invention-disclosure/',
 					),
 					array(
 						'label' => 'Non-Disclosure Agreements/MTAs',
-						'url' => 'http://cahnrs.wsu.edu/research/intellectual-property/#non-disclosure',
+						'url' => 'https://cahnrs.wsu.edu/research/home/intellectual-property/material-transfer-agreement/',
 					),
 					array(
 						'label' => 'Conflict of Interest',
@@ -306,7 +306,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Extension Publications',
-						'url' => 'http://extension.wsu.edu/learn/',
+						'url' => 'https://pubs.extension.wsu.edu/',
 					),
 					array(
 						'label' => 'Impacts',
@@ -344,7 +344,7 @@ $global_nav = array(
 			),
 			array(
 				'label' => 'Volunteers',
-				'url' => 'http://ext.wsu.edu/volunteers/logon.aspx',
+				'url' => 'https://volunteers.cahnrs.wsu.edu/logon.aspx',
 			),
 		),
 	),
