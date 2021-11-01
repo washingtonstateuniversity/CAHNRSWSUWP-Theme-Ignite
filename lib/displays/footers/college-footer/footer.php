@@ -30,6 +30,9 @@
 						<li class="c-submenu-item">
 							<a href="http://cahnrs.wsu.edu/about/in-the-news/">Latest News</a>
 						</li>
+						<li class="c-submenu-item">
+							<a href="https://cahnrs.wsu.edu/dei/">Diversity, Equity & Inclusion</a>
+						</li>
 						<li class="c-more-item">
 							<a href="http://cahnrs.wsu.edu/about">Learn About CAHNRS</a>
 						</li>

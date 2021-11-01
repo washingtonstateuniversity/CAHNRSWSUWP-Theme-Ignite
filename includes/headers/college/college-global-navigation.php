@@ -33,6 +33,10 @@ $global_nav = array(
 						'label' => 'Organization Chart',
 						'url' => 'http://cahnrs.wsu.edu/about/cahnrs-administration/#orgchart',
 					),
+					array(
+						'label' => 'Diversity, Equity & Inclusion',
+						'url' => 'http://cahnrs.wsu.edu/dei/',
+					),
 				),
 			),
 			array(
