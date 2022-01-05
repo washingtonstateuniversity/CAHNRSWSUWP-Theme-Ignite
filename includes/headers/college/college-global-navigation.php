@@ -74,6 +74,10 @@ $global_nav = array(
 						'url' => 'https://news.cahnrs.wsu.edu/',
 					),
 					array(
+						'label' => 'Future CAHNRS Cougs',
+						'url' => 'https://cahnrs.wsu.edu/academics/future-cahnrs-cougs/',
+					),
+					array(
 						'label' => 'Undergraduate Degrees',
 						'url' => 'http://cahnrs.wsu.edu/academics/majors/',
 					),
@@ -162,6 +166,10 @@ $global_nav = array(
 				'label' => 'Learn More',
 				'link' => 'http://cahnrs.wsu.edu/about/',
 				'menu-items' => array(
+					array(
+						'label' => 'Future CAHNRS Cougs',
+						'url' => 'https://cahnrs.wsu.edu/academics/future-cahnrs-cougs/',
+					),
 					array(
 						'label' => 'Scholarships',
 						'url' => 'http://cahnrs.wsu.edu/academics/scholarships/',
