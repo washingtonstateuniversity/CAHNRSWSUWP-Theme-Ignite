@@ -460,3 +460,11 @@ function ignite_get_custom_excerpt( $post, $words = 35 ) {
 	} // End if
 
 } // End cpb_custom_excerpt
+
+//Global Tracker Code
+function google_analytics_tracker(){
+    echo "<!-- Google tag (gtag.js) --> <script async src='https://www.googletagmanager.com/gtag/js?id=G-4QMXCEN73L'></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-4QMXCEN73L'); </script>";
+
+}
+
+add_action('wp_head', 'google_analytics_tracker');
