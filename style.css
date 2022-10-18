@@ -1273,7 +1273,7 @@ figure {
 	margin-right: 26px;
 }
 
-#college-global-footer-connect .c-soical a.fb {
+/* #college-global-footer-connect .c-soical a.fb {
 	background-image:url(./images/facebook-icon.png)
 }
 
@@ -1283,7 +1283,7 @@ figure {
 
 #college-global-footer-connect .c-soical a.youtube {
 	background-image: url(./images/youtube-icon.png);
-}
+} */
 
 #college-global-footer-connect .c-contact {
 	float: right;
