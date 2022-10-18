@@ -167,6 +167,7 @@ img {
 
 p {
 	padding-bottom: 1.3em;
+	line-height: 1.5;
 }
 
 body {
@@ -215,6 +216,10 @@ h6 {
 h1, h2, h3, h4, h5, h6 {
 	line-height: normal;
 	padding-top: 0;
+}
+
+article a {
+	text-decoration: underline;
 }
 
 a:hover {
@@ -3395,6 +3400,17 @@ body:not(.has-background-image) {
 	text-decoration: none;
 }
 
+#spine .spine-contact .organization-name {
+    font-size: 1em;
+}
+
+.email a {
+    color: #23282b !important;
+}
+
+#wsu-global-links a {
+    font-size: 11px;
+}
 /* Spine: Disabled Spine
 ------------------------------------*/
 body.disable-spine #spine {

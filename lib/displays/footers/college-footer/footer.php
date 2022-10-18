@@ -2,13 +2,13 @@
 	<div id="college-global-footer-connect">
 		<nav class="c-soical">
 			<a href="https://www.facebook.com/CAHNRS" class="fb">
-				<img src="wp-content/themes/cahnrswsuwp-theme-ignite/images/facebook-icon.png" alt="Visit CAHNRS Facebook">
+				<img src="<?php echo get_site_url() . '/wp-content/themes/cahnrswsuwp-theme-ignite/images/facebook-icon.png' ?>" alt="Visit CAHNRS Facebook">
 			</a>
 			<a href="https://twitter.com/wsucahnrs" class="twitter">
-				<img src="wp-content/themes/cahnrswsuwp-theme-ignite/images/twitter-icon.png" alt="Visit CAHNRS Twitter">
+				<img src="<?php echo get_site_url() . '/wp-content/themes/cahnrswsuwp-theme-ignite/images/twitter-icon.png' ?>" alt="Visit CAHNRS Twitter">
 			</a>
 			<a href="https://www.youtube.com/user/WSUCAHNRS" class="youtube">
-				<img src="wp-content/themes/cahnrswsuwp-theme-ignite/images/youtube-icon.png" alt="Visit CAHNRS Youtube">
+				<img src="<?php echo get_site_url() . '/wp-content/themes/cahnrswsuwp-theme-ignite/images/youtube-icon.png' ?>" alt="Visit CAHNRS Youtube">
 			</a>
 		</nav>
 		<nav class="c-contact">
