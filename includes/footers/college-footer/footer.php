@@ -5,7 +5,6 @@
 		</nav>
 		<nav class="c-contact">
 			<a href="http://cahnrs.wsu.edu/about/overview/cahnrs-administration/">Contact</a>
-			<a href="http://cahnrsdirectory.cahnrs.wsu.edu/default.aspx">Directory</a>
 			<a href="http://cahnrs.wsu.edu/about/locations/">Locations</a>
 		</nav>
 	</div>
