@@ -456,7 +456,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Extension Support',
-						'url' => 'http://cahnrs.wsu.edu/fs/home/business-services/extension-and-county-support/',
+						'url' => 'https://extension.wsu.edu/countyops/index/',
 					),
 					array(
 						'label' => 'FS Quick Links',
@@ -470,7 +470,7 @@ $global_nav = array(
 				'menu-items' => array(
 					array(
 						'label' => 'Budget/ Finance',
-						'url' => 'http://cahnrs.wsu.edu/fs/home/business-services/budget-and-finance-unit/',
+						'url' => 'https://business-center.cw.wsu.edu/',
 					),
 					array(
 						'label' => 'Grants Unit',
@@ -496,7 +496,7 @@ $global_nav = array(
 					),
 					array(
 						'label' => 'Prepare a Grant',
-						'url' => 'http://cahnrs.wsu.edu/fs/home/research-and-grant-unit/grant-preparation/proposal-development/',
+						'url' => 'https://cahnrs.wsu.edu/research/grant-resources/',
 					),
 					array(
 						'label' => 'Publish with Extension',
@@ -518,14 +518,14 @@ $global_nav = array(
 				'label' => 'E-Form Login',
 				'url' => 'https://webapps.wsu.edu/ais/wsueforms',
 			),
-			array(
-				'label' => 'Leave Reporting',
-				'url' => 'http://cahnrsforms.wsu.edu/leavereports/welcome.aspx',
-			),
-			array(
-				'label' => 'WORQS',
-				'url' => 'https://worqs.wsu.edu/login.aspx?ReturnUrl=%2fDefault.aspx',
-			),
+			// array(
+			// 	'label' => 'Leave Reporting',
+			// 	'url' => 'http://cahnrsforms.wsu.edu/leavereports/welcome.aspx',
+			// ),
+			// array(
+			// 	'label' => 'WORQS',
+			// 	'url' => 'https://worqs.wsu.edu/login.aspx?ReturnUrl=%2fDefault.aspx',
+			// ),
 		),
 	),
 ); ?>
