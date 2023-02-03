@@ -37,6 +37,10 @@ $global_nav = array(
 						'label' => 'Diversity, Equity & Inclusion',
 						'url' => 'http://cahnrs.wsu.edu/dei/',
 					),
+					array(
+						'label' => 'People Directory',
+						'url' => 'https://cahnrs.wsu.edu/people-directory/',
+					),
 				),
 			),
 			array(
