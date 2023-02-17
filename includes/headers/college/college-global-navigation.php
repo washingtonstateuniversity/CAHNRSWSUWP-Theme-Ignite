@@ -190,6 +190,10 @@ $global_nav = array(
 						'label' => 'About CAHNRS',
 						'url' => 'http://cahnrs.wsu.edu/about/',
 					),
+					array(
+						'label' => 'Ignite Scholars',
+						'url' => 'https://cahnrs.wsu.edu/ignite',
+					),
 				),
 			),
 		),
