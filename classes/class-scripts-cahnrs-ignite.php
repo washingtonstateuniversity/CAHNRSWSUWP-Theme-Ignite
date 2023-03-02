@@ -9,6 +9,8 @@ class Scripts_CAHNRS_Ignite {
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
+		add_action('wp_footer', array( $this, 'wp_enqueue_scripts_footer'));
+
 	} // end __construct
 
 
@@ -21,6 +23,12 @@ class Scripts_CAHNRS_Ignite {
 		wp_enqueue_script( 'vimeo', 'https://player.vimeo.com/api/player.js', array(), Functions_Ignite::$version );
 
 	} // end wp_enqueue_scripts
+
+	public function wp_enqueue_scripts_footer(){
+
+		wp_enqueue_script( 'cahnrs-js', CAHNRSIGNITEURL . 'js/cahnrs-ignite.js', array( 'jquery' ), Functions_Ignite::$version, true );
+	
+	}
 
 
 	public function admin_enqueue_scripts() {
