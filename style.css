@@ -3397,9 +3397,12 @@ body:not(.has-background-image) {
 }
 
 .spine-search.opened button:before,
-#default-search button,
 #spine a {
 	color: #23282b;
+}
+
+#default-search button {
+    color: #23282b !important;
 }
 
 #spine a:hover {
