@@ -3397,6 +3397,7 @@ body:not(.has-background-image) {
 }
 
 .spine-search.opened button:before,
+#default-search button,
 #spine a {
 	color: #23282b;
 }
