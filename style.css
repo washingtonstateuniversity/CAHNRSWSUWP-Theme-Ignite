@@ -5,7 +5,7 @@
  Author:         CAHNRS Communications
  Author URI:     https://cahnrs.wsu.edu/communications
  Template:       spine
- Version:        2.2.18
+ Version:        2.2.19
 */
 
 /*---------------------------------------------
@@ -3394,6 +3394,11 @@ body:not(.has-background-image) {
 .row {
 	margin-left: -2rem;
 	margin-right: -2rem;
+}
+
+.spine-search.opened button:before,
+#spine a {
+	color: #23282b;
 }
 
 #spine a:hover {
