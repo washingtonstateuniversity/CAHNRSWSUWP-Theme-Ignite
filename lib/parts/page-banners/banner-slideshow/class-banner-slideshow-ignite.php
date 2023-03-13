@@ -119,7 +119,7 @@ class Banner_Slideshow_Ignite {
 		$default_args = array(
 			'posts_per_page' => 3,
 			'slide_category' => false,
-			'order' => ASC,
+			'order' => 'ASC',
 
 		);
 
