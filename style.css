@@ -2749,6 +2749,10 @@ body .widget_cahnrs_action_item a {
 /* Plugin Overrides
 --------------------------------------------------------------- */
 /* Plugin Overrides: Tribe Events ------------- */
+#tribe-events #tribe-events-content a, 
+#tribe-events .tribe-events-event-meta a {
+	text-decoration: underline;
+}
 
 /* Post Formats
 --------------------------------------------------------------- */
