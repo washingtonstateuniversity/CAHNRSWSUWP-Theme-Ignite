@@ -251,11 +251,11 @@ $global_nav = array(
 				'menu-items' => array(
 					array(
 						'label' => 'Proposal Development',
-						'url' => 'http://cahnrs.wsu.edu/research/grant-resources/proposal-development/',
+						'url' => 'https://cahnrs.wsu.edu/research/office-of-large-grant-development/',
 					),
 					array(
 						'label' => 'Award Management Services',
-						'url' => 'http://cahnrs.wsu.edu/research/grant-resources/award-management-services/',
+						'url' => 'https://cahnrs.wsu.edu/research/grant-resources/grant-administrators/',
 					),
 					array(
 						'label' => 'REEport Instructions',
