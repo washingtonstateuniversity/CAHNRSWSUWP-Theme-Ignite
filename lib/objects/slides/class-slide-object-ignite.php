@@ -16,7 +16,7 @@ class Slide_Object_Ignite {
 
 	protected $index = '';
 
-	protected $show_caption = frue;
+	protected $show_caption = true;
 
 
 	public function set_from_loop( $index = '' ) {
