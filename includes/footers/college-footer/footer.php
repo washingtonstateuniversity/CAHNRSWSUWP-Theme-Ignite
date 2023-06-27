@@ -131,7 +131,7 @@
 							<a href="http://cahnrs.wsu.edu/fs/home/business-services/">Business Services</a>
 						</li>
 						<li class="c-submenu-item">
-							<a href="http://cahnrs.wsu.edu/fs/home/business-services/budget-and-finance-unit/">Budget & Finance Unit</a>
+							<a href="https://business-center.cw.wsu.edu/">Budget & Finance Unit</a>
 						</li>
 						<li class="c-submenu-item">
 							<a href="http://cahnrs.wsu.edu/fs/compliance-tools/">Civil Rights Compliance</a>
