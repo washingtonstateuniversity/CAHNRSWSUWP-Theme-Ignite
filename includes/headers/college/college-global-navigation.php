@@ -208,7 +208,7 @@ $global_nav = array(
 			),
 			array(
 				'label' => 'Apply to WSU',
-				'url' => 'http://admission.wsu.edu/applications/index.html',
+				'url' => 'https://admission.wsu.edu/',
 			),
 		),
 	),
