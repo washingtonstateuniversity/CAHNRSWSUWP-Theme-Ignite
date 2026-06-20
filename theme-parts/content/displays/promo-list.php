@@ -9,5 +9,5 @@
 			<?php echo wp_kses_post( wp_trim_words( get_the_excerpt(), 25 ) ); ?>
 		</div>
 	</div>
-	<div class="link-wrapper"><a href="<?php echo esc_url( get_post_permalink( get_the_ID() ) ); ?>">Learn more about <?php wp_kses_post( the_title() ); ?></a></div>
+	<div class="link-wrapper"><a href="<?php echo esc_url( get_post_permalink( get_the_ID() ) ); ?>">Learn more about <?php echo wp_kses_post( the_title() ); ?></a></div>
 </div>
